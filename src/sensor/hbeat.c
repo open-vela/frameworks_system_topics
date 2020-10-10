@@ -21,18 +21,10 @@
 static void print_sensor_hbeat_message(const void* buffer)
 {
     const struct sensor_hbeat* message = (const struct sensor_hbeat*)buffer;
-
-    uorbinfo_raw(" sensor_hbeat\n");
-
     const orb_abstime now = orb_absolute_time();
 
-    if (message->timestamp != 0) {
-        uorbinfo_raw("\ttimestamp: %" PRIu64 "  (%.6f seconds ago)\n", message->timestamp, (now - message->timestamp) / 1e6);
-    } else {
-        uorbinfo_raw("\n");
-    }
-
-    uorbinfo_raw("\theart beat: %.4f\n", message->beat);
+    uorbinfo_raw("sensor_hbeat:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) heart beat: %.2f",
+                  message->timestamp, now - message->timestamp, message->beat);
 }
 
 ORB_DEFINE(sensor_hbeat, struct sensor_hbeat, print_sensor_hbeat_message);

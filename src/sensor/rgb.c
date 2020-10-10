@@ -21,20 +21,10 @@
 static void print_sensor_rgb_message(const void* buffer)
 {
     const struct sensor_rgb* message = (const struct sensor_rgb*)buffer;
-
-    uorbinfo_raw(" sensor_rgb\n");
-
     const orb_abstime now = orb_absolute_time();
 
-    if (message->timestamp != 0) {
-        uorbinfo_raw("\ttimestamp: %" PRIu64 "  (%.6f seconds ago)\n", message->timestamp, (now - message->timestamp) / 1e6);
-    } else {
-        uorbinfo_raw("\n");
-    }
-
-    uorbinfo_raw("\tred: %.4f\n", message->r);
-    uorbinfo_raw("\tgreen: %.4f\n", message->g);
-    uorbinfo_raw("\tblue: %.4f\n", message->b);
+    uorbinfo_raw("sensor_rgb:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) red: %.2f green: %.2f blue: %.2f",
+                  message->timestamp, now - message->timestamp, message->r, message->g, message->b);
 }
 
 ORB_DEFINE(sensor_rgb, struct sensor_rgb, print_sensor_rgb_message);

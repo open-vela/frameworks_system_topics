@@ -22,19 +22,11 @@ static void print_sensor_gps_message(const void* buffer)
 {
     const struct sensor_gps* message = (const struct sensor_gps*)buffer;
 
-    uorbinfo_raw(" sensor_gps\n");
-    uorbinfo_raw("\tyear: %d\n", message->year);
-    uorbinfo_raw("\tmonth: %d\n", message->month);
-    uorbinfo_raw("\tday: %d\n", message->day);
-    uorbinfo_raw("\thour: %d\n", message->hour);
-    uorbinfo_raw("\tmin: %d\n", message->min);
-    uorbinfo_raw("\tsec: %d\n", message->sec);
-    uorbinfo_raw("\tmsec: %d\n", message->msec);
-    uorbinfo_raw("\tyaw: %.4f\n", message->yaw);
-    uorbinfo_raw("\theight: %.4f\n", message->height);
-    uorbinfo_raw("\tspeed: %.4f\n", message->speed);
-    uorbinfo_raw("\tlatitude: %.8f\n", message->latitude);
-    uorbinfo_raw("\tlongitude: %.8f\n", message->longitude);
+    uorbinfo_raw("sensor_gps:\tyear: %d month: %d day: %d hour: %d min: %d sec: %d msec: %d",
+                 message->year, message->month, message->day, message->hour, message->min, message->sec, message->msec);
+
+    uorbinfo_raw("sensor_gps:\tyaw: %.4f height: %.4f speed: %.4f latitude: %.4f longitude: %.4f",
+                 message->yaw, message->height, message->speed, message->latitude, message->longitude);
 }
 
 ORB_DEFINE(sensor_gps, struct sensor_gps, print_sensor_gps_message);
