@@ -21,18 +21,10 @@
 static void print_sensor_noise_message(const void* buffer)
 {
     const struct sensor_noise* message = (const struct sensor_noise*)buffer;
-
-    uorbinfo_raw(" sensor_noise\n");
-
     const orb_abstime now = orb_absolute_time();
 
-    if (message->timestamp != 0) {
-        uorbinfo_raw("\ttimestamp: %" PRIu64 "  (%.6f seconds ago)\n", message->timestamp, (now - message->timestamp) / 1e6);
-    } else {
-        uorbinfo_raw("\n");
-    }
-
-    uorbinfo_raw("\tnoise db: %.4f\n", message->db);
+    uorbinfo_raw("sensor_noise:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) noise: %.2f",
+                  message->timestamp, now - message->timestamp, message->db);
 }
 
 ORB_DEFINE(sensor_noise, struct sensor_noise, print_sensor_noise_message);

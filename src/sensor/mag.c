@@ -21,21 +21,10 @@
 static void print_sensor_mag_message(const void* buffer)
 {
     const struct sensor_mag* message = (const struct sensor_mag*)buffer;
-
-    uorbinfo_raw(" sensor_mag\n");
-
     const orb_abstime now = orb_absolute_time();
 
-    if (message->timestamp != 0) {
-        uorbinfo_raw("\ttimestamp: %" PRIu64 "  (%.6f seconds ago)\n", message->timestamp, (now - message->timestamp) / 1e6);
-    } else {
-        uorbinfo_raw("\n");
-    }
-
-    uorbinfo_raw("\tx: %.4f\n", message->x);
-    uorbinfo_raw("\ty: %.4f\n", message->y);
-    uorbinfo_raw("\tz: %.4f\n", message->z);
-    uorbinfo_raw("\ttemperature: %.4f\n", message->temperature);
+    uorbinfo_raw("sensor_mag:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) temperature: %.2f x: %.2f y: %.2f z: %.2f",
+                  message->timestamp, now - message->timestamp, message->temperature, message->x, message->y, message->z);
 }
 
 ORB_DEFINE(sensor_mag, struct sensor_mag, print_sensor_mag_message);

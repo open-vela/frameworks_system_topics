@@ -21,18 +21,10 @@
 static void print_sensor_hall_message(const void* buffer)
 {
     const struct sensor_hall* message = (const struct sensor_hall*)buffer;
-
-    uorbinfo_raw(" sensor_hall\n");
-
     const orb_abstime now = orb_absolute_time();
 
-    if (message->timestamp != 0) {
-        uorbinfo_raw("\ttimestamp: %" PRIu64 "  (%.6f seconds ago)\n", message->timestamp, (now - message->timestamp) / 1e6);
-    } else {
-        uorbinfo_raw("\n");
-    }
-
-    uorbinfo_raw("\thall: %d\n", message->hall);
+    uorbinfo_raw("sensor_hall:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) hall: %d",
+                  message->timestamp, now - message->timestamp, message->hall);
 }
 
 ORB_DEFINE(sensor_hall, struct sensor_hall, print_sensor_hall_message);

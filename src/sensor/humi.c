@@ -21,18 +21,10 @@
 static void print_sensor_humi_message(const void* buffer)
 {
     const struct sensor_humi* message = (const struct sensor_humi*)buffer;
-
-    uorbinfo_raw(" sensor_humi\n");
-
     const orb_abstime now = orb_absolute_time();
 
-    if (message->timestamp != 0) {
-        uorbinfo_raw("\ttimestamp: %" PRIu64 "  (%.6f seconds ago)\n", message->timestamp, (now - message->timestamp) / 1e6);
-    } else {
-        uorbinfo_raw("\n");
-    }
-
-    uorbinfo_raw("\thumidity: %.4f\n", message->humidity);
+    uorbinfo_raw("sensor_humi:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) humi: %.2f",
+                  message->timestamp, now - message->timestamp, message->humidity);
 }
 
 ORB_DEFINE(sensor_humi, struct sensor_humi, print_sensor_humi_message);
