@@ -21,18 +21,10 @@
 static void print_sensor_light_message(const void* buffer)
 {
     const struct sensor_light* message = (const struct sensor_light*)buffer;
-
-    uorbinfo_raw(" sensor_light\n");
-
     const orb_abstime now = orb_absolute_time();
 
-    if (message->timestamp != 0) {
-        uorbinfo_raw("\ttimestamp: %" PRIu64 "  (%.6f seconds ago)\n", message->timestamp, (now - message->timestamp) / 1e6);
-    } else {
-        uorbinfo_raw("\n");
-    }
-
-    uorbinfo_raw("\tlight: %.4f\n", message->light);
+    uorbinfo_raw("sensor_light:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) light: %.2f",
+                  message->timestamp, now - message->timestamp, message->light);
 }
 
 ORB_DEFINE(sensor_light, struct sensor_light, print_sensor_light_message);

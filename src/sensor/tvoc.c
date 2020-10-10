@@ -21,18 +21,10 @@
 static void print_sensor_tvoc_message(const void* buffer)
 {
     const struct sensor_tvoc* message = (const struct sensor_tvoc*)buffer;
-
-    uorbinfo_raw(" sensor_tvoc\n");
-
     const orb_abstime now = orb_absolute_time();
 
-    if (message->timestamp != 0) {
-        uorbinfo_raw("\ttimestamp: %" PRIu64 "  (%.6f seconds ago)\n", message->timestamp, (now - message->timestamp) / 1e6);
-    } else {
-        uorbinfo_raw("\n");
-    }
-
-    uorbinfo_raw("\ttvoc: %.4f\n", message->tvoc);
+    uorbinfo_raw("sensor_tvoc:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) tvoc: %.2f",
+                  message->timestamp, now - message->timestamp, message->tvoc);
 }
 
 ORB_DEFINE(sensor_tvoc, struct sensor_tvoc, print_sensor_tvoc_message);
