@@ -21,19 +21,10 @@
 static void print_sensor_baro_message(const void* buffer)
 {
     const struct sensor_baro* message = (const struct sensor_baro*)buffer;
-
-    uorbinfo_raw(" sensor_baro\n");
-
     const orb_abstime now = orb_absolute_time();
 
-    if (message->timestamp != 0) {
-        uorbinfo_raw("\ttimestamp: %" PRIu64 "  (%.6f seconds ago)\n", message->timestamp, (now - message->timestamp) / 1e6);
-    } else {
-        uorbinfo_raw("\n");
-    }
-
-    uorbinfo_raw("\tpressure: %.4f\n", message->pressure);
-    uorbinfo_raw("\ttemperature: %.4f\n", message->temperature);
+    uorbinfo_raw("sensor_baro:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) temperature: %.2f pressure: %.2f",
+                  message->timestamp, now - message->timestamp, message->temperature, message->pressure);
 }
 
 ORB_DEFINE(sensor_baro, struct sensor_baro, print_sensor_baro_message);
