@@ -18,13 +18,13 @@
 #include <sensor/hrate.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
-static void print_sensor_hrate_message(const void* buffer)
+static void print_sensor_hrate_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct sensor_hrate* message = (const struct sensor_hrate*)buffer;
     const orb_abstime now = orb_absolute_time();
 
-    uorbinfo_raw("sensor_hrate:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) heart rate: %.2f",
-                  message->timestamp, now - message->timestamp, message->bpm);
+    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) heart rate: %.2f",
+                  meta->o_name, message->timestamp, now - message->timestamp, message->bpm);
 }
 
 ORB_DEFINE(sensor_hrate, struct sensor_hrate, print_sensor_hrate_message);
