@@ -18,15 +18,15 @@
 #include <sensor/gps.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
-static void print_sensor_gps_message(const void* buffer)
+static void print_sensor_gps_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct sensor_gps* message = (const struct sensor_gps*)buffer;
 
-    uorbinfo_raw("sensor_gps:\tyear: %d month: %d day: %d hour: %d min: %d sec: %d msec: %d",
-                 message->year, message->month, message->day, message->hour, message->min, message->sec, message->msec);
+    uorbinfo_raw("%s:\tyear: %d month: %d day: %d hour: %d min: %d sec: %d msec: %d",
+                  meta->o_name, message->year, message->month, message->day, message->hour, message->min, message->sec, message->msec);
 
-    uorbinfo_raw("sensor_gps:\tyaw: %.4f height: %.4f speed: %.4f latitude: %.4f longitude: %.4f",
-                 message->yaw, message->height, message->speed, message->latitude, message->longitude);
+    uorbinfo_raw("%s:\tyaw: %.4f height: %.4f speed: %.4f latitude: %.4f longitude: %.4f",
+                  meta->o_name, message->yaw, message->height, message->speed, message->latitude, message->longitude);
 }
 
 ORB_DEFINE(sensor_gps, struct sensor_gps, print_sensor_gps_message);

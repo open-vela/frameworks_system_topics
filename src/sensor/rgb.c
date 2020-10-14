@@ -18,13 +18,13 @@
 #include <sensor/rgb.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
-static void print_sensor_rgb_message(const void* buffer)
+static void print_sensor_rgb_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct sensor_rgb* message = (const struct sensor_rgb*)buffer;
     const orb_abstime now = orb_absolute_time();
 
-    uorbinfo_raw("sensor_rgb:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) red: %.2f green: %.2f blue: %.2f",
-                  message->timestamp, now - message->timestamp, message->r, message->g, message->b);
+    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) red: %.2f green: %.2f blue: %.2f",
+                  meta->o_name, message->timestamp, now - message->timestamp, message->r, message->g, message->b);
 }
 
 ORB_DEFINE(sensor_rgb, struct sensor_rgb, print_sensor_rgb_message);

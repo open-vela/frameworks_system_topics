@@ -18,16 +18,18 @@
 #include <sensor/mag.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
-static void print_sensor_mag_message(const void* buffer)
+static void print_sensor_mag_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct sensor_mag* message = (const struct sensor_mag*)buffer;
     const orb_abstime now = orb_absolute_time();
 
-    uorbinfo_raw("sensor_mag:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) temperature: %.2f x: %.2f y: %.2f z: %.2f",
-                  message->timestamp, now - message->timestamp, message->temperature, message->x, message->y, message->z);
+    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) temperature: %.2f x: %.2f y: %.2f z: %.2f",
+                  meta->o_name, message->timestamp, now - message->timestamp, message->temperature, message->x, message->y, message->z);
 }
 
 ORB_DEFINE(sensor_mag, struct sensor_mag, print_sensor_mag_message);
+ORB_DEFINE(sensor_mag_uncal, struct sensor_mag, print_sensor_mag_message);
 #else
 ORB_DEFINE(sensor_mag, struct sensor_mag, NULL);
+ORB_DEFINE(sensor_mag_uncal, struct sensor_mag, NULL);
 #endif
