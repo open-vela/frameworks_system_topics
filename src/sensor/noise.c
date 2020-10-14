@@ -18,13 +18,13 @@
 #include <sensor/noise.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
-static void print_sensor_noise_message(const void* buffer)
+static void print_sensor_noise_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct sensor_noise* message = (const struct sensor_noise*)buffer;
     const orb_abstime now = orb_absolute_time();
 
-    uorbinfo_raw("sensor_noise:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) noise: %.2f",
-                  message->timestamp, now - message->timestamp, message->db);
+    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) noise: %.2f",
+                  meta->o_name, message->timestamp, now - message->timestamp, message->db);
 }
 
 ORB_DEFINE(sensor_noise, struct sensor_noise, print_sensor_noise_message);

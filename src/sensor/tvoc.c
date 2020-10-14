@@ -18,13 +18,13 @@
 #include <sensor/tvoc.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
-static void print_sensor_tvoc_message(const void* buffer)
+static void print_sensor_tvoc_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct sensor_tvoc* message = (const struct sensor_tvoc*)buffer;
     const orb_abstime now = orb_absolute_time();
 
-    uorbinfo_raw("sensor_tvoc:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) tvoc: %.2f",
-                  message->timestamp, now - message->timestamp, message->tvoc);
+    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) tvoc: %.2f",
+                  meta->o_name, message->timestamp, now - message->timestamp, message->tvoc);
 }
 
 ORB_DEFINE(sensor_tvoc, struct sensor_tvoc, print_sensor_tvoc_message);

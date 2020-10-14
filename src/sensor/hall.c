@@ -18,13 +18,13 @@
 #include <sensor/hall.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
-static void print_sensor_hall_message(const void* buffer)
+static void print_sensor_hall_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct sensor_hall* message = (const struct sensor_hall*)buffer;
     const orb_abstime now = orb_absolute_time();
 
-    uorbinfo_raw("sensor_hall:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) hall: %d",
-                  message->timestamp, now - message->timestamp, message->hall);
+    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) hall: %d",
+                  meta->o_name, message->timestamp, now - message->timestamp, message->hall);
 }
 
 ORB_DEFINE(sensor_hall, struct sensor_hall, print_sensor_hall_message);

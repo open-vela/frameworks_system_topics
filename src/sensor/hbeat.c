@@ -18,13 +18,13 @@
 #include <sensor/hbeat.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
-static void print_sensor_hbeat_message(const void* buffer)
+static void print_sensor_hbeat_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct sensor_hbeat* message = (const struct sensor_hbeat*)buffer;
     const orb_abstime now = orb_absolute_time();
 
-    uorbinfo_raw("sensor_hbeat:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) heart beat: %.2f",
-                  message->timestamp, now - message->timestamp, message->beat);
+    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) heart beat: %.2f",
+                  meta->o_name, message->timestamp, now - message->timestamp, message->beat);
 }
 
 ORB_DEFINE(sensor_hbeat, struct sensor_hbeat, print_sensor_hbeat_message);

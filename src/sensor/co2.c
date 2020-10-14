@@ -18,13 +18,13 @@
 #include <sensor/co2.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
-static void print_sensor_co2_message(const void* buffer)
+static void print_sensor_co2_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct sensor_co2* message = (const struct sensor_co2*)buffer;
     const orb_abstime now = orb_absolute_time();
 
-    uorbinfo_raw("sensor_co2:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) co2: %.2f",
-                  message->timestamp, now - message->timestamp, message->co2);
+    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) co2: %.2f",
+                  meta->o_name, message->timestamp, now - message->timestamp, message->co2);
 }
 
 ORB_DEFINE(sensor_co2, struct sensor_co2, print_sensor_co2_message);

@@ -18,13 +18,13 @@
 #include <sensor/temp.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
-static void print_sensor_temp_message(const void* buffer)
+static void print_sensor_temp_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct sensor_temp* message = (const struct sensor_temp*)buffer;
     const orb_abstime now = orb_absolute_time();
 
-    uorbinfo_raw("sensor_temp:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) temperature: %.2f",
-                  message->timestamp, now - message->timestamp, message->temperature);
+    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) temperature: %.2f",
+                  meta->o_name, message->timestamp, now - message->timestamp, message->temperature);
 }
 
 ORB_DEFINE(sensor_temp, struct sensor_temp, print_sensor_temp_message);

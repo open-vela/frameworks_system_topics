@@ -18,13 +18,13 @@
 #include <sensor/prox.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
-static void print_sensor_prox_message(const void* buffer)
+static void print_sensor_prox_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct sensor_prox* message = (const struct sensor_prox*)buffer;
     const orb_abstime now = orb_absolute_time();
 
-    uorbinfo_raw("sensor_prox:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) proximity: %.2f",
-                  message->timestamp, now - message->timestamp, message->proximity);
+    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) proximity: %.2f",
+                  meta->o_name, message->timestamp, now - message->timestamp, message->proximity);
 }
 
 ORB_DEFINE(sensor_prox, struct sensor_prox, print_sensor_prox_message);

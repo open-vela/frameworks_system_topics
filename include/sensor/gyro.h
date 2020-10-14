@@ -30,5 +30,6 @@ struct sensor_gyro {
 /* register this as object request broker structure */
 
 ORB_DECLARE(sensor_gyro);
+ORB_DECLARE(sensor_gyro_uncal);
 
 #endif

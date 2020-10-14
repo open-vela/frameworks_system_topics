@@ -18,13 +18,13 @@
 #include <sensor/ir.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
-static void print_sensor_ir_message(const void* buffer)
+static void print_sensor_ir_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct sensor_ir* message = (const struct sensor_ir*)buffer;
     const orb_abstime now = orb_absolute_time();
 
-    uorbinfo_raw("sensor_ir:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) ir: %.2f",
-                  message->timestamp, now - message->timestamp, message->ir);
+    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) ir: %.2f",
+                  meta->o_name, message->timestamp, now - message->timestamp, message->ir);
 }
 
 ORB_DEFINE(sensor_ir, struct sensor_ir, print_sensor_ir_message);

@@ -18,13 +18,13 @@
 #include <sensor/hcho.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
-static void print_sensor_hcho_message(const void* buffer)
+static void print_sensor_hcho_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct sensor_hcho* message = (const struct sensor_hcho*)buffer;
     const orb_abstime now = orb_absolute_time();
 
-    uorbinfo_raw("sensor_hcho:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) hcho: %.2f",
-                  message->timestamp, now - message->timestamp, message->hcho);
+    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) hcho: %.2f",
+                  meta->o_name, message->timestamp, now - message->timestamp, message->hcho);
 }
 
 ORB_DEFINE(sensor_hcho, struct sensor_hcho, print_sensor_hcho_message);

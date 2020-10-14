@@ -18,13 +18,13 @@
 #include <sensor/dust.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
-static void print_sensor_dust_message(const void* buffer)
+static void print_sensor_dust_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct sensor_dust* message = (const struct sensor_dust*)buffer;
     const orb_abstime now = orb_absolute_time();
 
-    uorbinfo_raw("sensor_dust:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) dust: %.2f",
-                  message->timestamp, now - message->timestamp, message->dust);
+    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) dust: %.2f",
+                  meta->o_name, message->timestamp, now - message->timestamp, message->dust);
 }
 
 ORB_DEFINE(sensor_dust, struct sensor_dust, print_sensor_dust_message);
