@@ -18,13 +18,13 @@
 #include <sensor/pm25.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
-static void print_sensor_pm25_message(const void* buffer)
+static void print_sensor_pm25_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct sensor_pm25* message = (const struct sensor_pm25*)buffer;
     const orb_abstime now = orb_absolute_time();
 
-    uorbinfo_raw("sensor_pm25:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) pm25: %.2f",
-                  message->timestamp, now - message->timestamp, message->pm25);
+    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) pm25: %.2f",
+                  meta->o_name, message->timestamp, now - message->timestamp, message->pm25);
 }
 
 ORB_DEFINE(sensor_pm25, struct sensor_pm25, print_sensor_pm25_message);

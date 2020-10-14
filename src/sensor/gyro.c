@@ -18,16 +18,18 @@
 #include <sensor/gyro.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
-static void print_sensor_gyro_message(const void* buffer)
+static void print_sensor_gyro_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct sensor_gyro* message = (const struct sensor_gyro*)buffer;
     const orb_abstime now = orb_absolute_time();
 
-    uorbinfo_raw("sensor_gyro:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) temperature: %.2f x: %.2f y: %.2f z: %.2f",
-                  message->timestamp, now - message->timestamp, message->temperature, message->x, message->y, message->z);
+    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) temperature: %.2f x: %.2f y: %.2f z: %.2f",
+                  meta->o_name, message->timestamp, now - message->timestamp, message->temperature, message->x, message->y, message->z);
 }
 
 ORB_DEFINE(sensor_gyro, struct sensor_gyro, print_sensor_gyro_message);
+ORB_DEFINE(sensor_gyro_uncal, struct sensor_gyro, print_sensor_gyro_message);
 #else
 ORB_DEFINE(sensor_gyro, struct sensor_gyro, NULL);
+ORB_DEFINE(sensor_gyro_uncal, struct sensor_gyro, NULL);
 #endif
