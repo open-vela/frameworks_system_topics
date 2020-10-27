@@ -17,5 +17,6 @@
 include $(APPDIR)/Make.defs
 
 CSRCS    += $(wildcard src/*/*.c)
+CFLAGS   += ${shell $(INCDIR) $(INCDIROPT) "$(CC)" $(APPDIR)/external/uORB}
 
 include $(APPDIR)/Application.mk
