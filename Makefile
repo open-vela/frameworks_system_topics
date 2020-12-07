@@ -16,7 +16,10 @@
 
 include $(APPDIR)/Make.defs
 
-CSRCS    += $(wildcard src/*/*.c)
+src/uORBTopics.c: $(wildcard include/*/*.h)
+	./topics.sh > src/uORBTopics.c
+
+CSRCS    += $(wildcard src/*/*.c) src/uORBTopics.c
 CFLAGS   += ${shell $(INCDIR) $(INCDIROPT) "$(CC)" $(APPDIR)/external/uORB}
 
 include $(APPDIR)/Application.mk
