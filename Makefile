@@ -22,4 +22,7 @@ src/uORBTopics.c: $(wildcard include/*/*.h)
 CSRCS    += $(wildcard src/*/*.c) src/uORBTopics.c
 CFLAGS   += ${shell $(INCDIR) $(INCDIROPT) "$(CC)" $(APPDIR)/external/uORB}
 
+clean::
+	$(call DELFILE, src/uORBTopics.c)
+
 include $(APPDIR)/Application.mk
