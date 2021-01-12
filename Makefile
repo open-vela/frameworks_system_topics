@@ -17,10 +17,14 @@
 include $(APPDIR)/Make.defs
 
 src/uORBTopics.c: $(wildcard include/*/*.h)
-	./topics.sh > src/uORBTopics.c
+	./topics.sh -c > src/uORBTopics.c
+	./topics.sh -h > src/uORBTopics.h
+
+context:: src/uORBTopics.c
 
 CSRCS    += $(wildcard src/*/*.c) src/uORBTopics.c
 CFLAGS   += ${shell $(INCDIR) $(INCDIROPT) "$(CC)" $(APPDIR)/external/uORB}
+CFLAGS   += ${shell $(INCDIR) $(INCDIROPT) "$(CC)" $(APPDIR)/frameworks/topics/src/}
 
 clean::
 	$(call DELFILE, src/uORBTopics.c)

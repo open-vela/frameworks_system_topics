@@ -16,6 +16,7 @@
 
 #include <uORB/common/log.h>
 #include <sensor/pm25.h>
+#include <uORBTopics.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
 static void print_sensor_pm25_message(const struct orb_metadata *meta, const void* buffer)
@@ -27,7 +28,7 @@ static void print_sensor_pm25_message(const struct orb_metadata *meta, const voi
                   meta->o_name, message->timestamp, now - message->timestamp, message->pm25);
 }
 
-ORB_DEFINE(sensor_pm25, struct sensor_pm25, print_sensor_pm25_message);
+ORB_DEFINE(sensor_pm25, struct sensor_pm25, print_sensor_pm25_message, sensor_pm25);
 #else
-ORB_DEFINE(sensor_pm25, struct sensor_pm25, NULL);
+ORB_DEFINE(sensor_pm25, struct sensor_pm25, NULL, sensor_pm25);
 #endif

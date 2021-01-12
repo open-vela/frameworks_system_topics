@@ -16,6 +16,7 @@
 
 #include <uORB/common/log.h>
 #include <sensor/co2.h>
+#include <uORBTopics.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
 static void print_sensor_co2_message(const struct orb_metadata *meta, const void* buffer)
@@ -27,7 +28,7 @@ static void print_sensor_co2_message(const struct orb_metadata *meta, const void
                   meta->o_name, message->timestamp, now - message->timestamp, message->co2);
 }
 
-ORB_DEFINE(sensor_co2, struct sensor_co2, print_sensor_co2_message);
+ORB_DEFINE(sensor_co2, struct sensor_co2, print_sensor_co2_message, sensor_co2);
 #else
-ORB_DEFINE(sensor_co2, struct sensor_co2, NULL);
+ORB_DEFINE(sensor_co2, struct sensor_co2, NULL, sensor_co2);
 #endif

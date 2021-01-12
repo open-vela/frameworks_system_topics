@@ -16,6 +16,7 @@
 
 #include <uORB/common/log.h>
 #include <sensor/hrate.h>
+#include <uORBTopics.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
 static void print_sensor_hrate_message(const struct orb_metadata *meta, const void* buffer)
@@ -27,7 +28,7 @@ static void print_sensor_hrate_message(const struct orb_metadata *meta, const vo
                   meta->o_name, message->timestamp, now - message->timestamp, message->bpm);
 }
 
-ORB_DEFINE(sensor_hrate, struct sensor_hrate, print_sensor_hrate_message);
+ORB_DEFINE(sensor_hrate, struct sensor_hrate, print_sensor_hrate_message, sensor_hrate);
 #else
-ORB_DEFINE(sensor_hrate, struct sensor_hrate, NULL);
+ORB_DEFINE(sensor_hrate, struct sensor_hrate, NULL, sensor_hrate);
 #endif

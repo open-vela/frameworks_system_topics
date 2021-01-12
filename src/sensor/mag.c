@@ -16,6 +16,7 @@
 
 #include <uORB/common/log.h>
 #include <sensor/mag.h>
+#include <uORBTopics.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
 static void print_sensor_mag_message(const struct orb_metadata *meta, const void* buffer)
@@ -27,9 +28,9 @@ static void print_sensor_mag_message(const struct orb_metadata *meta, const void
                   meta->o_name, message->timestamp, now - message->timestamp, message->temperature, message->x, message->y, message->z);
 }
 
-ORB_DEFINE(sensor_mag, struct sensor_mag, print_sensor_mag_message);
-ORB_DEFINE(sensor_mag_uncal, struct sensor_mag, print_sensor_mag_message);
+ORB_DEFINE(sensor_mag, struct sensor_mag, print_sensor_mag_message, sensor_mag);
+ORB_DEFINE(sensor_mag_uncal, struct sensor_mag, print_sensor_mag_message, sensor_mag_uncal);
 #else
-ORB_DEFINE(sensor_mag, struct sensor_mag, NULL);
-ORB_DEFINE(sensor_mag_uncal, struct sensor_mag, NULL);
+ORB_DEFINE(sensor_mag, struct sensor_mag, NULL, sensor_mag);
+ORB_DEFINE(sensor_mag_uncal, struct sensor_mag, NULL, sensor_mag_uncal);
 #endif

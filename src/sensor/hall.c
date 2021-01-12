@@ -16,6 +16,7 @@
 
 #include <uORB/common/log.h>
 #include <sensor/hall.h>
+#include <uORBTopics.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
 static void print_sensor_hall_message(const struct orb_metadata *meta, const void* buffer)
@@ -27,7 +28,7 @@ static void print_sensor_hall_message(const struct orb_metadata *meta, const voi
                   meta->o_name, message->timestamp, now - message->timestamp, message->hall);
 }
 
-ORB_DEFINE(sensor_hall, struct sensor_hall, print_sensor_hall_message);
+ORB_DEFINE(sensor_hall, struct sensor_hall, print_sensor_hall_message, sensor_hall);
 #else
-ORB_DEFINE(sensor_hall, struct sensor_hall, NULL);
+ORB_DEFINE(sensor_hall, struct sensor_hall, NULL, sensor_hall);
 #endif

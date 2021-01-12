@@ -16,6 +16,7 @@
 
 #include <uORB/common/log.h>
 #include <sensor/rgb.h>
+#include <uORBTopics.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
 static void print_sensor_rgb_message(const struct orb_metadata *meta, const void* buffer)
@@ -27,7 +28,7 @@ static void print_sensor_rgb_message(const struct orb_metadata *meta, const void
                   meta->o_name, message->timestamp, now - message->timestamp, message->r, message->g, message->b);
 }
 
-ORB_DEFINE(sensor_rgb, struct sensor_rgb, print_sensor_rgb_message);
+ORB_DEFINE(sensor_rgb, struct sensor_rgb, print_sensor_rgb_message, sensor_rgb);
 #else
-ORB_DEFINE(sensor_rgb, struct sensor_rgb, NULL);
+ORB_DEFINE(sensor_rgb, struct sensor_rgb, NULL, sensor_rgb);
 #endif
