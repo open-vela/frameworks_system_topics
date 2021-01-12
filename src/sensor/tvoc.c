@@ -16,6 +16,7 @@
 
 #include <uORB/common/log.h>
 #include <sensor/tvoc.h>
+#include <uORBTopics.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
 static void print_sensor_tvoc_message(const struct orb_metadata *meta, const void* buffer)
@@ -27,7 +28,7 @@ static void print_sensor_tvoc_message(const struct orb_metadata *meta, const voi
                   meta->o_name, message->timestamp, now - message->timestamp, message->tvoc);
 }
 
-ORB_DEFINE(sensor_tvoc, struct sensor_tvoc, print_sensor_tvoc_message);
+ORB_DEFINE(sensor_tvoc, struct sensor_tvoc, print_sensor_tvoc_message, sensor_tvoc);
 #else
-ORB_DEFINE(sensor_tvoc, struct sensor_tvoc, NULL);
+ORB_DEFINE(sensor_tvoc, struct sensor_tvoc, NULL, sensor_tvoc);
 #endif

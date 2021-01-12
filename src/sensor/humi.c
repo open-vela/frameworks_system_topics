@@ -16,6 +16,7 @@
 
 #include <uORB/common/log.h>
 #include <sensor/humi.h>
+#include <uORBTopics.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
 static void print_sensor_humi_message(const struct orb_metadata *meta, const void* buffer)
@@ -27,7 +28,7 @@ static void print_sensor_humi_message(const struct orb_metadata *meta, const voi
                   meta->o_name, message->timestamp, now - message->timestamp, message->humidity);
 }
 
-ORB_DEFINE(sensor_humi, struct sensor_humi, print_sensor_humi_message);
+ORB_DEFINE(sensor_humi, struct sensor_humi, print_sensor_humi_message, sensor_humi);
 #else
-ORB_DEFINE(sensor_humi, struct sensor_humi, NULL);
+ORB_DEFINE(sensor_humi, struct sensor_humi, NULL, sensor_humi);
 #endif
