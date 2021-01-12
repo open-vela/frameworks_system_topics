@@ -16,6 +16,7 @@
 
 #include <uORB/common/log.h>
 #include <sensor/hcho.h>
+#include <uORBTopics.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
 static void print_sensor_hcho_message(const struct orb_metadata *meta, const void* buffer)
@@ -27,7 +28,7 @@ static void print_sensor_hcho_message(const struct orb_metadata *meta, const voi
                   meta->o_name, message->timestamp, now - message->timestamp, message->hcho);
 }
 
-ORB_DEFINE(sensor_hcho, struct sensor_hcho, print_sensor_hcho_message);
+ORB_DEFINE(sensor_hcho, struct sensor_hcho, print_sensor_hcho_message, sensor_hcho);
 #else
-ORB_DEFINE(sensor_hcho, struct sensor_hcho, NULL);
+ORB_DEFINE(sensor_hcho, struct sensor_hcho, NULL, sensor_hcho);
 #endif

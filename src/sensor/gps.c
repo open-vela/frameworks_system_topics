@@ -16,6 +16,7 @@
 
 #include <uORB/common/log.h>
 #include <sensor/gps.h>
+#include <uORBTopics.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
 static void print_sensor_gps_message(const struct orb_metadata *meta, const void* buffer)
@@ -29,7 +30,7 @@ static void print_sensor_gps_message(const struct orb_metadata *meta, const void
                   meta->o_name, message->yaw, message->height, message->speed, message->latitude, message->longitude);
 }
 
-ORB_DEFINE(sensor_gps, struct sensor_gps, print_sensor_gps_message);
+ORB_DEFINE(sensor_gps, struct sensor_gps, print_sensor_gps_message, sensor_gps);
 #else
-ORB_DEFINE(sensor_gps, struct sensor_gps, NULL);
+ORB_DEFINE(sensor_gps, struct sensor_gps, NULL, sensor_gps);
 #endif

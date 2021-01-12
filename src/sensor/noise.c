@@ -16,6 +16,7 @@
 
 #include <uORB/common/log.h>
 #include <sensor/noise.h>
+#include <uORBTopics.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
 static void print_sensor_noise_message(const struct orb_metadata *meta, const void* buffer)
@@ -27,7 +28,7 @@ static void print_sensor_noise_message(const struct orb_metadata *meta, const vo
                   meta->o_name, message->timestamp, now - message->timestamp, message->db);
 }
 
-ORB_DEFINE(sensor_noise, struct sensor_noise, print_sensor_noise_message);
+ORB_DEFINE(sensor_noise, struct sensor_noise, print_sensor_noise_message, sensor_noise);
 #else
-ORB_DEFINE(sensor_noise, struct sensor_noise, NULL);
+ORB_DEFINE(sensor_noise, struct sensor_noise, NULL, sensor_noise);
 #endif
