@@ -16,6 +16,7 @@
 
 #include <uORB/common/log.h>
 #include <sensor/light.h>
+#include <uORBTopics.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
 static void print_sensor_light_message(const struct orb_metadata *meta, const void* buffer)
@@ -27,7 +28,7 @@ static void print_sensor_light_message(const struct orb_metadata *meta, const vo
                   meta->o_name, message->timestamp, now - message->timestamp, message->light);
 }
 
-ORB_DEFINE(sensor_light, struct sensor_light, print_sensor_light_message);
+ORB_DEFINE(sensor_light, struct sensor_light, print_sensor_light_message, sensor_light);
 #else
-ORB_DEFINE(sensor_light, struct sensor_light, NULL);
+ORB_DEFINE(sensor_light, struct sensor_light, NULL, sensor_light);
 #endif

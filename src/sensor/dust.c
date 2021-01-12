@@ -16,6 +16,7 @@
 
 #include <uORB/common/log.h>
 #include <sensor/dust.h>
+#include <uORBTopics.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
 static void print_sensor_dust_message(const struct orb_metadata *meta, const void* buffer)
@@ -27,7 +28,7 @@ static void print_sensor_dust_message(const struct orb_metadata *meta, const voi
                   meta->o_name, message->timestamp, now - message->timestamp, message->dust);
 }
 
-ORB_DEFINE(sensor_dust, struct sensor_dust, print_sensor_dust_message);
+ORB_DEFINE(sensor_dust, struct sensor_dust, print_sensor_dust_message, sensor_dust);
 #else
-ORB_DEFINE(sensor_dust, struct sensor_dust, NULL);
+ORB_DEFINE(sensor_dust, struct sensor_dust, NULL, sensor_dust);
 #endif

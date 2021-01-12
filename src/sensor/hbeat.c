@@ -16,6 +16,7 @@
 
 #include <uORB/common/log.h>
 #include <sensor/hbeat.h>
+#include <uORBTopics.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
 static void print_sensor_hbeat_message(const struct orb_metadata *meta, const void* buffer)
@@ -27,7 +28,7 @@ static void print_sensor_hbeat_message(const struct orb_metadata *meta, const vo
                   meta->o_name, message->timestamp, now - message->timestamp, message->beat);
 }
 
-ORB_DEFINE(sensor_hbeat, struct sensor_hbeat, print_sensor_hbeat_message);
+ORB_DEFINE(sensor_hbeat, struct sensor_hbeat, print_sensor_hbeat_message, sensor_hbeat);
 #else
-ORB_DEFINE(sensor_hbeat, struct sensor_hbeat, NULL);
+ORB_DEFINE(sensor_hbeat, struct sensor_hbeat, NULL, sensor_hbeat);
 #endif

@@ -16,6 +16,7 @@
 
 #include <uORB/common/log.h>
 #include <sensor/gyro.h>
+#include <uORBTopics.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
 static void print_sensor_gyro_message(const struct orb_metadata *meta, const void* buffer)
@@ -27,9 +28,9 @@ static void print_sensor_gyro_message(const struct orb_metadata *meta, const voi
                   meta->o_name, message->timestamp, now - message->timestamp, message->temperature, message->x, message->y, message->z);
 }
 
-ORB_DEFINE(sensor_gyro, struct sensor_gyro, print_sensor_gyro_message);
-ORB_DEFINE(sensor_gyro_uncal, struct sensor_gyro, print_sensor_gyro_message);
+ORB_DEFINE(sensor_gyro, struct sensor_gyro, print_sensor_gyro_message, sensor_gyro);
+ORB_DEFINE(sensor_gyro_uncal, struct sensor_gyro, print_sensor_gyro_message, sensor_gyro_uncal);
 #else
-ORB_DEFINE(sensor_gyro, struct sensor_gyro, NULL);
-ORB_DEFINE(sensor_gyro_uncal, struct sensor_gyro, NULL);
+ORB_DEFINE(sensor_gyro, struct sensor_gyro, NULL, sensor_gyro);
+ORB_DEFINE(sensor_gyro_uncal, struct sensor_gyro, NULL, sensor_gyro_uncal);
 #endif

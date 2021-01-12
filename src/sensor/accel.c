@@ -16,6 +16,7 @@
 
 #include <uORB/common/log.h>
 #include <sensor/accel.h>
+#include <uORBTopics.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
 static void print_sensor_accel_message(const struct orb_metadata *meta, const void* buffer)
@@ -27,9 +28,9 @@ static void print_sensor_accel_message(const struct orb_metadata *meta, const vo
                   meta->o_name, message->timestamp, now - message->timestamp, message->temperature, message->x, message->y, message->z);
 }
 
-ORB_DEFINE(sensor_accel, struct sensor_accel, print_sensor_accel_message);
-ORB_DEFINE(sensor_accel_uncal, struct sensor_accel, print_sensor_accel_message);
+ORB_DEFINE(sensor_accel, struct sensor_accel, print_sensor_accel_message, sensor_accel);
+ORB_DEFINE(sensor_accel_uncal, struct sensor_accel, print_sensor_accel_message, sensor_accel_uncal);
 #else
-ORB_DEFINE(sensor_accel, struct sensor_accel, NULL);
-ORB_DEFINE(sensor_accel_uncal, struct sensor_accel, NULL);
+ORB_DEFINE(sensor_accel, struct sensor_accel, NULL, sensor_accel);
+ORB_DEFINE(sensor_accel_uncal, struct sensor_accel, NULL, sensor_accel_uncal);
 #endif

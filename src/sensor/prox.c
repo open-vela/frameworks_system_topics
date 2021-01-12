@@ -16,6 +16,7 @@
 
 #include <uORB/common/log.h>
 #include <sensor/prox.h>
+#include <uORBTopics.h>
 
 #ifdef CONFIG_DEBUG_FEATURES
 static void print_sensor_prox_message(const struct orb_metadata *meta, const void* buffer)
@@ -27,7 +28,7 @@ static void print_sensor_prox_message(const struct orb_metadata *meta, const voi
                   meta->o_name, message->timestamp, now - message->timestamp, message->proximity);
 }
 
-ORB_DEFINE(sensor_prox, struct sensor_prox, print_sensor_prox_message);
+ORB_DEFINE(sensor_prox, struct sensor_prox, print_sensor_prox_message, sensor_prox);
 #else
-ORB_DEFINE(sensor_prox, struct sensor_prox, NULL);
+ORB_DEFINE(sensor_prox, struct sensor_prox, NULL, sensor_prox);
 #endif
