@@ -32,6 +32,7 @@ echo -n '
 #define ORB_DECLARE(x) ORB_ID(x)
 
 const struct orb_metadata* const g_uorb_topics_list[] = {
+NULL,
 '
 grep -rh ORB_DECLARE include | sed 's/;/,/g' | sort
 echo -n '};
@@ -54,7 +55,8 @@ extern \"C\" {
 echo '#undef ORB_DECLARE
 #define ORB_DECLARE(x) x
 
-enum ORB_ID {'
+enum ORB_ID {
+ORB_DECLARE(invalid),'
 
 grep -rh ORB_DECLARE include | sed 's/;/,/g' | sort
 
