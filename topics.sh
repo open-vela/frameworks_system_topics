@@ -25,7 +25,7 @@ then
 echo '#include <uORB/uORB.h>
 '
 
-grep -rh ORB_DECLARE include
+grep -rh ORB_DECLARE include --include=*.h
 
 echo -n '
 #undef ORB_DECLARE
