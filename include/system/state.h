@@ -21,13 +21,32 @@
 
 struct wireless_state {
     uint64_t timestamp; /* Units is microseconds */
-    int conn;           /* Conn type, <0:unknown, 0:disconnected 1:connected */
-    int rssi;           /* The sensitivity(RSSI). */
+    int conn; /* Conn type, <0:unknown, 0:disconnected 1:connected */
+    int rssi; /* The sensitivity(RSSI). */
+};
+
+struct wear_state {
+    uint64_t timestamp; /* Units is microseconds */
+    int wear; /* Wear staus, <1:wore, 2:not wore */
+};
+
+struct sleep_state {
+    uint64_t timestamp; /* Units is microseconds */
+    int sleep; /* Sleep staus, <1:slept, 2:not slept */
+};
+
+struct battery_state {
+    uint64_t timestamp; /* Units is microseconds */
+    int state; /* Battery charging staus, <1:start, 2:complete 3:stop */
+    int level; /* Battery level in percent */
 };
 
 /* register this as object request broker structure */
 
 ORB_DECLARE(wifi_state);
 ORB_DECLARE(bt_state);
+ORB_DECLARE(wear_state);
+ORB_DECLARE(sleep_state);
+ORB_DECLARE(battery_state);
 
 #endif
