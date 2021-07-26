@@ -14,9 +14,12 @@
  * limitations under the License.
  */
 
-#include <uORB/common/log.h>
 #include <system/state.h>
+#include <uORB/common/log.h>
 #include <uORBTopics.h>
 
 ORB_DEFINE(wifi_state, struct wireless_state, NULL, wifi_state);
-ORB_DEFINE(bt_state,   struct wireless_state, NULL, bt_state);
+ORB_DEFINE(bt_state, struct wireless_state, NULL, bt_state);
+ORB_DEFINE(wear_state, struct wear_state, NULL, wear_state);
+ORB_DEFINE(sleep_state, struct sleep_state, NULL, sleep_state);
+ORB_DEFINE(battery_state, struct battery_state, NULL, battery_state);
