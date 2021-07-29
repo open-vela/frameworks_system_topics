@@ -18,6 +18,16 @@
 #define __TOPICS_INCLUDE_SYSTEM_STATE_H
 
 #include <uORB/uORB.h>
+#include <sys/socket.h>
+
+enum network_state_e {
+    NETWORK_NONE = 0,
+    NETWORK_WIFI,
+    NETWORK_BT,
+    NETWORK_OTHER,
+};
+
+typedef enum network_state_e network_state_t;
 
 struct wireless_state {
     uint64_t timestamp; /* Units is microseconds */
@@ -41,6 +51,16 @@ struct battery_state {
     int level; /* Battery level in percent */
 };
 
+struct network_state {
+    uint64_t timestamp;   /* Units is microseconds */
+    network_state_t type; /* Network Type. wifi, none, bluetooth, others. */
+};
+
+struct network_pubip {
+    uint64_t timestamp; /* Units is microseconds */
+    struct sockaddr_storage addr; /* Local public network ip. */
+};
+
 /* register this as object request broker structure */
 
 ORB_DECLARE(wifi_state);
@@ -48,5 +68,7 @@ ORB_DECLARE(bt_state);
 ORB_DECLARE(wear_state);
 ORB_DECLARE(sleep_state);
 ORB_DECLARE(battery_state);
+ORB_DECLARE(network_state);
+ORB_DECLARE(network_pubip);
 
 #endif
