@@ -47,7 +47,7 @@ struct sleep_state {
 
 struct battery_state {
     uint64_t timestamp; /* Units is microseconds */
-    int state; /* Battery charging staus, <1:start, 2:complete 3:stop */
+    int state; /* Battery charging staus, <1:charging, 2:not charging */
     int level; /* Battery level in percent */
 };
 
