@@ -61,6 +61,11 @@ struct network_pubip {
     struct sockaddr_storage addr; /* Local public network ip. */
 };
 
+struct active_state {
+    uint64_t timestamp; /* Units is microseconds */
+    int active; /* App active status. <1:has activity, 2:no activity */
+};
+
 /* register this as object request broker structure */
 
 ORB_DECLARE(wifi_state);
@@ -70,5 +75,6 @@ ORB_DECLARE(sleep_state);
 ORB_DECLARE(battery_state);
 ORB_DECLARE(network_state);
 ORB_DECLARE(network_pubip);
+ORB_DECLARE(active_state);
 
 #endif

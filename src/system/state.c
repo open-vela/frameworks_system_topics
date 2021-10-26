@@ -25,3 +25,4 @@ ORB_DEFINE(sleep_state, struct sleep_state, NULL, sleep_state);
 ORB_DEFINE(battery_state, struct battery_state, NULL, battery_state);
 ORB_DEFINE(network_state, struct network_state, NULL, network_state);
 ORB_DEFINE(network_pubip, struct network_pubip, NULL, network_pubip);
+ORB_DEFINE(active_state, struct active_state, NULL, active_state);
