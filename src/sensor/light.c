@@ -29,6 +29,8 @@ static void print_sensor_light_message(const struct orb_metadata *meta, const vo
 }
 
 ORB_DEFINE(sensor_light, struct sensor_light, print_sensor_light_message, sensor_light);
+ORB_DEFINE(sensor_light_uncal, struct sensor_light, print_sensor_light_message, sensor_light_uncal);
 #else
 ORB_DEFINE(sensor_light, struct sensor_light, NULL, sensor_light);
+ORB_DEFINE(sensor_light_uncal, struct sensor_light, NULL, sensor_light_uncal);
 #endif
