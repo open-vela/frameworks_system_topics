@@ -27,5 +27,6 @@ struct sensor_light {
 /* register this as object request broker structure */
 
 ORB_DECLARE(sensor_light);
+ORB_DECLARE(sensor_light_uncal);
 
 #endif
