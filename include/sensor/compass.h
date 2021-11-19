@@ -19,7 +19,7 @@
 
 #include <uORB/uORB.h>
 
-struct compass {
+struct sensor_compass {
     uint64_t timestamp; /* Units is microseconds */
     uint8_t state; /* Calibration level, the Range is [0, 4]. */
     float direction; /* Compass direction， the unit is 1 degree. */
