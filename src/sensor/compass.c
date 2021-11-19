@@ -22,7 +22,7 @@
 static void print_compass_message(const struct orb_metadata* meta,
     const void* buffer)
 {
-    const struct compass* message = (const struct compass*)buffer;
+    const struct sensor_compass* message = (const struct sensor_compass*)buffer;
     const orb_abstime now = orb_absolute_time();
 
     uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago)"
@@ -33,7 +33,7 @@ static void print_compass_message(const struct orb_metadata* meta,
         message->gravity_magnitude);
 }
 
-ORB_DEFINE(sensor_compass, struct compass, print_compass_message, sensor_compass);
+ORB_DEFINE(sensor_compass, struct sensor_compass, print_compass_message, sensor_compass);
 #else
-ORB_DEFINE(sensor_compass, struct compass, NULL, sensor_compass);
+ORB_DEFINE(sensor_compass, struct sensor_compass, NULL, sensor_compass);
 #endif
