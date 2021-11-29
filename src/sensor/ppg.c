@@ -24,8 +24,10 @@ static void print_sensor_ppg_message(const struct orb_metadata* meta, const void
     const struct sensor_ppg* message = (const struct sensor_ppg*)buffer;
     const orb_abstime now = orb_absolute_time();
 
-    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) ppg: %d",
-        meta->o_name, message->timestamp, now - message->timestamp, message->ppg);
+    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) "
+                 "ppg1: %" PRIu32 " ppg2: %" PRIu32 " current: %" PRIu32 "",
+        meta->o_name, message->timestamp, now - message->timestamp, message->ppg1,
+        message->ppg2, message->current);
 }
 
 ORB_DEFINE(sensor_ppg, struct sensor_ppg, print_sensor_ppg_message, sensor_ppg);
