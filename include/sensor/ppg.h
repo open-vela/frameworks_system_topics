@@ -21,7 +21,9 @@
 
 struct sensor_ppg {
     uint64_t timestamp; /* Units is microseconds */
-    uint32_t ppg; /* PPG signal magnitude, unit is ADC counts */
+    uint32_t ppg1; /* PPG channel1 signal magnitude, unit is ADC counts */
+    uint32_t ppg2; /* PPG channel2 signal magnitude, unit is ADC counts */
+    uint32_t current; /* LED driver current, unit is uA */
 };
 
 /* register this as object request broker structure */
