@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ $# -gt 1 ];then
+args=("$@")
+fi
+
 echo '/*
  * Copyright (C) 2020 Xiaomi Corporation
  *
@@ -25,7 +29,10 @@ then
 echo '#include <uORB/uORB.h>
 '
 
-grep -rh ORB_DECLARE include --include=*.h
+for((i=1;i<$#;i++))
+do
+  grep -rh ORB_DECLARE ${args[$i]} --include=*.h
+done
 
 echo -n '
 #undef ORB_DECLARE
@@ -34,7 +41,12 @@ echo -n '
 const struct orb_metadata* const g_uorb_topics_list[] = {
 NULL,
 '
-grep -rh ORB_DECLARE include --include=*.h | sed 's/;/,/g' | sort
+
+for((i=1;i<$#;i++))
+do
+  grep -rh ORB_DECLARE ${args[$i]} --include=*.h | sed 's/;/,/g' | sort
+done
+
 echo -n '};
 '
 
@@ -58,7 +70,10 @@ echo '#undef ORB_DECLARE
 enum ORB_ID {
 ORB_DECLARE(invalid),'
 
-grep -rh ORB_DECLARE include --include=*.h | sed 's/;/,/g' | sort
+for((i=1;i<$#;i++))
+do
+  grep -rh ORB_DECLARE ${args[$i]} --include=*.h | sed 's/;/,/g' | sort
+done
 
 echo -n '};
 
