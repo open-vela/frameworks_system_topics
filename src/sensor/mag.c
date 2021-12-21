@@ -24,8 +24,8 @@ static void print_sensor_mag_message(const struct orb_metadata *meta, const void
     const struct sensor_mag* message = (const struct sensor_mag*)buffer;
     const orb_abstime now = orb_absolute_time();
 
-    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) temperature: %.2f x: %.2f y: %.2f z: %.2f",
-                  meta->o_name, message->timestamp, now - message->timestamp, message->temperature, message->x, message->y, message->z);
+    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) temperature: %.2f x: %.2f y: %.2f z: %.2f calibration status: %d",
+                  meta->o_name, message->timestamp, now - message->timestamp, message->temperature, message->x, message->y, message->z, message->status);
 }
 
 ORB_DEFINE(sensor_mag, struct sensor_mag, print_sensor_mag_message, sensor_mag);

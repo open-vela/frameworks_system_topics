@@ -25,6 +25,7 @@ struct sensor_mag {
     float y; /* Axis Y in Gauss or micro Tesla (uT) */
     float z; /* Axis Z in Gauss or micro Tesla (uT) */
     float temperature; /* Temperature in degrees celsius */
+    int32_t status; /* Status of calibration */
 };
 
 /* register this as object request broker structure */
