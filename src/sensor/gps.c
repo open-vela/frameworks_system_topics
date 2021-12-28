@@ -44,7 +44,7 @@ static void print_sensor_gps_satellite_message(const struct orb_metadata* meta, 
         meta->o_name, message->timestamp, now - message->timestamp);
 
     for (i = 0; i < message->count; i++) {
-        uorbinfo_raw("%s:\tnumber:%d svid: %" PRIu32 " .elevation: %" PRIu32 " azimuth: %" PRIu32 " snr: %" PRIu32 "",
+        uorbinfo_raw("%s:\tnumber:%d svid: %" PRIu32 " elevation: %" PRIu32 " azimuth: %" PRIu32 " snr: %" PRIu32 "",
             meta->o_name, i, message->info[i].svid, message->info[i].elevation, message->info[i].azimuth, message->info[i].snr);
     }
 }
