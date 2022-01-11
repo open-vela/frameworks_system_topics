@@ -49,6 +49,7 @@ struct battery_state {
     uint64_t timestamp; /* Units is microseconds */
     int state; /* Battery charging staus, <1:charging, 2:not charging */
     int level; /* Battery level in percent */
+    int temp;  /* Battery temp */
 };
 
 struct network_state {
