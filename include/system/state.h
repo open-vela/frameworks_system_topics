@@ -17,8 +17,8 @@
 #ifndef __TOPICS_INCLUDE_SYSTEM_STATE_H
 #define __TOPICS_INCLUDE_SYSTEM_STATE_H
 
-#include <uORB/uORB.h>
 #include <sys/socket.h>
+#include <uORB/uORB.h>
 
 enum network_state_e {
     NETWORK_NONE = 0,
@@ -28,12 +28,6 @@ enum network_state_e {
 };
 
 typedef enum network_state_e network_state_t;
-
-struct wireless_state {
-    uint64_t timestamp; /* Units is microseconds */
-    int conn; /* Conn type, <0:unknown, 0:disconnected 1:connected */
-    int rssi; /* The sensitivity(RSSI). */
-};
 
 struct wear_state {
     uint64_t timestamp; /* Units is microseconds */
@@ -69,8 +63,6 @@ struct active_state {
 
 /* register this as object request broker structure */
 
-ORB_DECLARE(wifi_state);
-ORB_DECLARE(bt_state);
 ORB_DECLARE(wear_state);
 ORB_DECLARE(sleep_state);
 ORB_DECLARE(battery_state);

@@ -14,13 +14,20 @@
  * limitations under the License.
  */
 
-#include <system/state.h>
-#include <uORB/common/log.h>
-#include <uORBTopics.h>
+#ifndef __TOPICS_INCLUDE_CONNECTIVITY_WIFI_H
+#define __TOPICS_INCLUDE_CONNECTIVITY_WIFI_H
 
-ORB_DEFINE(wear_state, struct wear_state, NULL, wear_state);
-ORB_DEFINE(sleep_state, struct sleep_state, NULL, sleep_state);
-ORB_DEFINE(battery_state, struct battery_state, NULL, battery_state);
-ORB_DEFINE(network_state, struct network_state, NULL, network_state);
-ORB_DEFINE(network_pubip, struct network_pubip, NULL, network_pubip);
-ORB_DEFINE(active_state, struct active_state, NULL, active_state);
+#include <uORB/uORB.h>
+
+struct wifi_state {
+    uint64_t timestamp; /* Units is microseconds */
+    uint8_t addr[6]; /* Peer device address */
+    int conn; /* Conn type, <0:unknown, 0:disconnected 1:connected */
+    int rssi; /* The sensitivity(RSSI). */
+};
+
+/* register this as object request broker structure */
+
+ORB_DECLARE(wifi_state);
+
+#endif
