@@ -21,9 +21,9 @@
 
 struct sensor_gnss_parameter {
     int cn0; /* Signal Intensity */
-    int ttff; /* Positioning Time */
-    int clk_drift; /* CLK Drift */
-    int freq_error; /* Frequency Error */
+    float ttff; /* Positioning Time */
+    float clk_drift; /* CLK Drift */
+    uint32_t info[16]; /* num|gnssId|svId|cnr */
 };
 
 /* register this as object request broker structure */
