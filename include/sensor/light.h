@@ -22,6 +22,7 @@
 struct sensor_light {
     uint64_t timestamp; /* Units is microseconds */
     float light; /* light measurement in SI units lux */
+    float ir; /* infrared Ray in SI units lux */
 };
 
 /* register this as object request broker structure */
