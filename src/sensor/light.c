@@ -24,8 +24,8 @@ static void print_sensor_light_message(const struct orb_metadata *meta, const vo
     const struct sensor_light* message = (const struct sensor_light*)buffer;
     const orb_abstime now = orb_absolute_time();
 
-    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) light: %.2f",
-                  meta->o_name, message->timestamp, now - message->timestamp, message->light);
+    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) light: %.2f ir: %.2f",
+                  meta->o_name, message->timestamp, now - message->timestamp, message->light, message->ir);
 }
 
 ORB_DEFINE(sensor_light, struct sensor_light, print_sensor_light_message, sensor_light);
