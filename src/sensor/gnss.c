@@ -25,9 +25,13 @@ static void print_sensor_gnss_parameter_message(const struct orb_metadata* meta,
     const struct sensor_gnss_parameter* message = (const struct sensor_gnss_parameter*)buffer;
 
     uorbinfo_raw("cn0: %d\n", message->cn0);
-    uorbinfo_raw("ttff: %d\n", message->ttff);
-    uorbinfo_raw("clk_drift: %d\n", message->clk_drift);
-    uorbinfo_raw("freq_error: %d\n", message->freq_error);
+    uorbinfo_raw("ttff: %f\n", message->ttff);
+    uorbinfo_raw("clk_drift: %.2f\n", message->clk_drift);
+
+    for (int i = 0; i < (sizeof(message->info) / sizeof(uint32_t)); i++)
+    {
+        uorbinfo_raw("info[%d]: 0x%08"PRIx32"\n", i, message->info[i]);
+    }
 }
 
 ORB_DEFINE(sensor_gnss_parameter, struct sensor_gnss_parameter, print_sensor_gnss_parameter_message, sensor_gnss_parameter);
