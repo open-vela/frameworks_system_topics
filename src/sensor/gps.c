@@ -30,8 +30,8 @@ static void print_sensor_gps_message(const struct orb_metadata* meta, const void
     uorbinfo_raw("%s:\taltitude: %.4f altitude_ellipsoid: %.4f ground_speed: %.4f course: %.4f",
         meta->o_name, message->altitude, message->altitude_ellipsoid, message->ground_speed, message->course);
 
-    uorbinfo_raw("%s:\teph: %.4f epv: %.4f hdop: %.4f vdop: %.4f",
-        meta->o_name, message->eph, message->epv, message->hdop, message->vdop);
+    uorbinfo_raw("%s:\teph: %.4f epv: %.4f hdop: %.4f pdop: %.4f vdop: %.4f",
+        meta->o_name, message->eph, message->epv, message->hdop, message->pdop, message->vdop);
 }
 
 static void print_sensor_gps_satellite_message(const struct orb_metadata* meta, const void* buffer)
