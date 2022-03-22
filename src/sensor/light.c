@@ -18,7 +18,7 @@
 #include <sensor/light.h>
 #include <uORBTopics.h>
 
-#ifdef CONFIG_DEBUG_FEATURES
+#ifdef CONFIG_DEBUG_SENSORS
 static void print_sensor_light_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct sensor_light* message = (const struct sensor_light*)buffer;
