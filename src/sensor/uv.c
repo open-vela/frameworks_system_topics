@@ -18,7 +18,7 @@
 #include <sensor/uv.h>
 #include <uORBTopics.h>
 
-#ifdef CONFIG_DEBUG_FEATURES
+#ifdef CONFIG_DEBUG_SENSORS
 static void print_sensor_uv_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct sensor_uv* message = (const struct sensor_uv*)buffer;

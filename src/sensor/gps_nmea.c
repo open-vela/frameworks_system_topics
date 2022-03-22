@@ -18,7 +18,7 @@
 #include <sensor/gps_nmea.h>
 #include <uORBTopics.h>
 
-#ifdef CONFIG_DEBUG_FEATURES
+#ifdef CONFIG_DEBUG_SENSORS
 static void print_gps_nmea_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct gps_nmea* message = (const struct gps_nmea*)buffer;

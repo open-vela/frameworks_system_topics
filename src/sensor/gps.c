@@ -18,7 +18,7 @@
 #include <uORB/common/log.h>
 #include <uORBTopics.h>
 
-#ifdef CONFIG_DEBUG_FEATURES
+#ifdef CONFIG_DEBUG_SENSORS
 static void print_sensor_gps_message(const struct orb_metadata* meta, const void* buffer)
 {
     const struct sensor_gps* message = (const struct sensor_gps*)buffer;

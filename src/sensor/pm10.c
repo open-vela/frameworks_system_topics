@@ -18,7 +18,7 @@
 #include <sensor/pm10.h>
 #include <uORBTopics.h>
 
-#ifdef CONFIG_DEBUG_FEATURES
+#ifdef CONFIG_DEBUG_SENSORS
 static void print_sensor_pm10_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct sensor_pm10* message = (const struct sensor_pm10*)buffer;

@@ -18,7 +18,7 @@
 #include <sensor/humi.h>
 #include <uORBTopics.h>
 
-#ifdef CONFIG_DEBUG_FEATURES
+#ifdef CONFIG_DEBUG_SENSORS
 static void print_sensor_humi_message(const struct orb_metadata *meta, const void* buffer)
 {
     const struct sensor_humi* message = (const struct sensor_humi*)buffer;
