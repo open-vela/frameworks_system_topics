@@ -27,6 +27,8 @@ struct sensor_compass {
     float gravity_magnitude; /* Gravity magnitude, the range is 0 to 9.8 m/s². */
 };
 
+/* register this as object request broker structure */
+
 ORB_DECLARE(sensor_compass);
 
 #endif
