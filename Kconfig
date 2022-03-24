@@ -13,9 +13,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-config UORB_TOPICS_DIRS
-	string "uorb topics dirs"
-	default "frameworks/topics/include"
-	---help---
-		Multiple directories use ";" as delimiters.

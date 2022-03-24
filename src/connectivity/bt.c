@@ -15,9 +15,7 @@
  */
 
 #include <connectivity/bt.h>
-#include <uORB/common/log.h>
-#include <uORBTopics.h>
 
-ORB_DEFINE(bt_state, struct bt_state, NULL, bt_state);
-ORB_DEFINE(a2dp_state, struct a2dp_state, NULL, a2dp_state);
-ORB_DEFINE(hfp_state, struct hfp_state, NULL, hfp_state);
+ORB_DEFINE(bt_state, struct bt_state, NULL);
+ORB_DEFINE(a2dp_state, struct a2dp_state, NULL);
+ORB_DEFINE(hfp_state, struct hfp_state, NULL);

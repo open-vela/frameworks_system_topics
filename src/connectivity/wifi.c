@@ -15,7 +15,5 @@
  */
 
 #include <connectivity/wifi.h>
-#include <uORB/common/log.h>
-#include <uORBTopics.h>
 
-ORB_DEFINE(wifi_state, struct wifi_state, NULL, wifi_state);
+ORB_DEFINE(wifi_state, struct wifi_state, NULL);

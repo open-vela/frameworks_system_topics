@@ -14,21 +14,16 @@
  * limitations under the License.
  */
 
-#include <uORB/common/log.h>
 #include <sensor/gps_nmea.h>
-#include <uORBTopics.h>
 
-#ifdef CONFIG_DEBUG_SENSORS
-static void print_gps_nmea_message(const struct orb_metadata *meta, const void* buffer)
+#ifdef CONFIG_DEBUG_UORB
+static void print_gps_nmea_message(const struct orb_metadata* meta, const void* buffer)
 {
-    const struct gps_nmea* message = (const struct gps_nmea*)buffer;
+    const struct gps_nmea* message = buffer;
     const orb_abstime now = orb_absolute_time();
 
     uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) nmea: %s",
-                  meta->o_name, message->timestamp, now - message->timestamp, message->nmea);
+        meta->o_name, message->timestamp, now - message->timestamp, message->nmea);
 }
-
-ORB_DEFINE(gps_nmea, struct gps_nmea, print_gps_nmea_message, gps_nmea);
-#else
-ORB_DEFINE(gps_nmea, struct gps_nmea, NULL, gps_nmea);
 #endif
+ORB_DEFINE(gps_nmea, struct gps_nmea, print_gps_nmea_message);
