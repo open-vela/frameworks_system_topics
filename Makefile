@@ -16,19 +16,6 @@
 
 include $(APPDIR)/Make.defs
 
-topics_dirs := $(foreach subdir,$(subst ;, ,$(subst ", ,$(CONFIG_UORB_TOPICS_DIRS))),$(APPDIR)/$(subdir))
-
-src/uORBTopics.c: $(wildcard include/*/*.h)
-	./topics.sh -c $(topics_dirs) > src/uORBTopics.c
-	./topics.sh -h $(topics_dirs) > src/uORBTopics.h
-
-context:: src/uORBTopics.c
-
-CSRCS    += $(wildcard src/*/*.c) src/uORBTopics.c
-CFLAGS   += ${shell $(INCDIR) $(INCDIROPT) "$(CC)" $(APPDIR)/external/uORB}
-CFLAGS   += ${shell $(INCDIR) $(INCDIROPT) "$(CC)" $(APPDIR)/frameworks/topics/src/}
-
-clean::
-	$(call DELFILE, src/uORBTopics.c)
+CSRCS    += $(wildcard src/*/*.c)
 
 include $(APPDIR)/Application.mk
