@@ -14,15 +14,13 @@
  * limitations under the License.
  */
 
-#include <uORB/common/log.h>
 #include <media/pcm16.h>
-#include <uORBTopics.h>
 
-ORB_DEFINE(media_pcm16_1ch, struct media_pcm16_1ch, NULL, media_pcm16_1ch);
-ORB_DEFINE(media_pcm16_2ch, struct media_pcm16_2ch, NULL, media_pcm16_2ch);
-ORB_DEFINE(media_pcm16_3ch, struct media_pcm16_3ch, NULL, media_pcm16_3ch);
-ORB_DEFINE(media_pcm16_4ch, struct media_pcm16_4ch, NULL, media_pcm16_4ch);
-ORB_DEFINE(media_pcm16_5ch, struct media_pcm16_5ch, NULL, media_pcm16_5ch);
-ORB_DEFINE(media_pcm16_6ch, struct media_pcm16_6ch, NULL, media_pcm16_6ch);
-ORB_DEFINE(media_pcm16_7ch, struct media_pcm16_7ch, NULL, media_pcm16_7ch);
-ORB_DEFINE(media_pcm16_8ch, struct media_pcm16_8ch, NULL, media_pcm16_8ch);
+ORB_DEFINE(media_pcm16_1ch, struct media_pcm16_1ch, NULL);
+ORB_DEFINE(media_pcm16_2ch, struct media_pcm16_2ch, NULL);
+ORB_DEFINE(media_pcm16_3ch, struct media_pcm16_3ch, NULL);
+ORB_DEFINE(media_pcm16_4ch, struct media_pcm16_4ch, NULL);
+ORB_DEFINE(media_pcm16_5ch, struct media_pcm16_5ch, NULL);
+ORB_DEFINE(media_pcm16_6ch, struct media_pcm16_6ch, NULL);
+ORB_DEFINE(media_pcm16_7ch, struct media_pcm16_7ch, NULL);
+ORB_DEFINE(media_pcm16_8ch, struct media_pcm16_8ch, NULL);

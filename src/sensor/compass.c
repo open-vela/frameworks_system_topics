@@ -14,26 +14,20 @@
  * limitations under the License.
  */
 
-#include <uORB/common/log.h>
 #include <sensor/compass.h>
-#include <uORBTopics.h>
 
-#ifdef CONFIG_DEBUG_SENSORS
-static void print_compass_message(const struct orb_metadata* meta,
-    const void* buffer)
+#ifdef CONFIG_DEBUG_UORB
+static void print_compass_message(const struct orb_metadata* meta, const void* buffer)
 {
-    const struct sensor_compass* message = (const struct sensor_compass*)buffer;
+    const struct sensor_compass* message = buffer;
     const orb_abstime now = orb_absolute_time();
 
     uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago)"
                  "state: %d, direction: %.01f, gravity_direction: %.01f,"
-                 "gravity_magnitude: %.1f\n",
+                 "gravity_magnitude: %.1f",
         meta->o_name, message->timestamp, now - message->timestamp,
         message->state, message->direction, message->gravity_direction,
         message->gravity_magnitude);
 }
-
-ORB_DEFINE(sensor_compass, struct sensor_compass, print_compass_message, sensor_compass);
-#else
-ORB_DEFINE(sensor_compass, struct sensor_compass, NULL, sensor_compass);
 #endif
+ORB_DEFINE(sensor_compass, struct sensor_compass, print_compass_message);
