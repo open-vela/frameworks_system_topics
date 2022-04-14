@@ -19,6 +19,15 @@
 
 #include <uORB/uORB.h>
 
+enum sensor_ppgq_instance_index {
+    SENSOR_PPGQ_GREEN        = 0, /* Light green */
+    SENSOR_PPGQ_RED          = 1, /* Light red */
+    SENSOR_PPGQ_INFRARED     = 2, /* Light infrared */
+    SENSOR_PPGQ_AMBIENT      = 3, /* Light ambient */
+    SENSOR_PPGQ_GREEN_FIX    = 4, /* Light green of fixed current */
+    SENSOR_PPGQ_INFRARED_FIX = 5, /* Light infrared of fixed current */
+};
+
 struct sensor_ppgq {
     uint64_t timestamp; /* Units is microseconds */
     uint32_t ppg[4]; /* PPG channels signal magnitude, units are ADC counts */
