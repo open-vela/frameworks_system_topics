@@ -21,7 +21,7 @@
 
 struct gps_nmea {
     uint64_t timestamp; /* Units is microseconds */
-    char nmea[256]; /* Using to save an nmea message */
+    char nmea[200]; /* Using to save an nmea message */
 };
 
 /* register this as object request broker structure */
