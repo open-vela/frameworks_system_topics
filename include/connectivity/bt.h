@@ -19,6 +19,11 @@
 
 #include <uORB/uORB.h>
 
+enum stack_state {
+    BT_STACK_STATE_OFF = 0,
+    BT_STACK_STATE_ON
+};
+
 enum profile_connection_state {
     PROFILE_CONN_DISCONNECTED = 0,
     PROFILE_CONN_CONNECTING,
@@ -46,6 +51,11 @@ struct bt_state {
     int rssi; /* The sensitivity(RSSI). */
 };
 
+struct bt_stack_state {
+    uint64_t timestamp; /* Units is microseconds */
+    enum stack_state state;
+};
+
 struct a2dp_state {
     uint64_t timestamp; /* Units is microseconds */
     uint8_t addr[6]; /* Peer device address*/
@@ -63,6 +73,7 @@ struct hfp_state {
 /* register this as object request broker structure */
 
 ORB_DECLARE(bt_state);
+ORB_DECLARE(bt_stack_state);
 ORB_DECLARE(a2dp_state);
 ORB_DECLARE(hfp_state);
 
