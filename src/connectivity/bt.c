@@ -17,5 +17,6 @@
 #include <connectivity/bt.h>
 
 ORB_DEFINE(bt_state, struct bt_state, NULL);
+ORB_DEFINE(bt_stack_state, struct bt_stack_state, NULL);
 ORB_DEFINE(a2dp_state, struct a2dp_state, NULL);
 ORB_DEFINE(hfp_state, struct hfp_state, NULL);
