@@ -16,6 +16,13 @@
 
 include $(APPDIR)/Make.defs
 
+ifneq ($(CONFIG_ARCH_BOARD_CUSTOM_NAME),)
+  BIN := $(TOPDIR)/$(CONFIG_ARCH_BOARD_CUSTOM_DIR)/libs/$(CONFIG_ARCH_BOARD_CUSTOM_NAME)/libframework.a
+endif
+
 CSRCS    += $(wildcard src/*/*.c)
+
+distclean::
+	rm -rf $(TOPDIR)/$(CONFIG_ARCH_BOARD_CUSTOM_DIR)/libs/$(CONFIG_ARCH_BOARD_CUSTOM_NAME)
 
 include $(APPDIR)/Application.mk
