@@ -19,7 +19,7 @@
 
 #include <uORB/uORB.h>
 
-#define MESSAGE_NAME_MAX  29
+#define MESSAGE_NAME_MAX  47
 
 #define MESSAGE_TYPE_DECLARE(msgname, jsonlen) \
     struct msgname { \
