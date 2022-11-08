@@ -62,6 +62,16 @@ struct active_state {
     int active; /* App active status. <1:has activity, 2:no activity */
 };
 
+struct screen_onoff {
+    uint64_t timestamp;
+    int onoff; /* The screen is on or off, 1: on, 0: off */
+};
+
+struct screen_brightness {
+    uint64_t timestamp;
+    int brightness; /* The brightness of screen, range 1 ~ 255 */
+};
+
 /* register this as object request broker structure */
 
 ORB_DECLARE(wear_state);
@@ -70,5 +80,7 @@ ORB_DECLARE(battery_state);
 ORB_DECLARE(network_state);
 ORB_DECLARE(network_pubip);
 ORB_DECLARE(active_state);
+ORB_DECLARE(screen_onoff);
+ORB_DECLARE(screen_brightness);
 
 #endif
