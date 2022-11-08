@@ -22,3 +22,5 @@ ORB_DEFINE(battery_state, struct battery_state, NULL);
 ORB_DEFINE(network_state, struct network_state, NULL);
 ORB_DEFINE(network_pubip, struct network_pubip, NULL);
 ORB_DEFINE(active_state, struct active_state, NULL);
+ORB_DEFINE(screen_onoff, struct screen_onoff, NULL);
+ORB_DEFINE(screen_brightness, struct screen_brightness, NULL);
