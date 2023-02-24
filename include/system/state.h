@@ -43,12 +43,13 @@ struct battery_state {
     uint64_t timestamp; /* Units is microseconds */
     int state; /* Battery charging staus, <1:charging, 0:not charging */
     int level; /* Battery level in percent */
-    int temp;  /* Battery temp */
-    int curr;  /* Battery current */
+    int temp; /* Battery temp */
+    int curr; /* Battery current */
+    int voltage; /* Battery voltage */
 };
 
 struct network_state {
-    uint64_t timestamp;   /* Units is microseconds */
+    uint64_t timestamp; /* Units is microseconds */
     network_state_t type; /* Network Type. wifi, none, bluetooth, others. */
 };
 
