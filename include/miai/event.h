@@ -22,11 +22,11 @@
 typedef enum event_type_e {
     MSG_TYPE_NULL = 0,
     MSG_TYPE_WAKEUP = 1,
-    MSG_TYPE_NIGHT =  2,
+    MSG_TYPE_NIGHT = 2,
     MSG_TYPE_BT_WIFICONFIG = 3,
     MSG_TYPE_BIND_STATE = 4,
+    MSG_TYPE_SCREEN_BRIGHTNESS_SET = 5,
 } event_type_t;
-
 
 struct miai_event {
     uint64_t timestamp;
