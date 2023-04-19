@@ -16,6 +16,6 @@
 
 ifneq ($(CONFIG_UORB),)
 CONFIGURED_APPS += $(APPDIR)/frameworks/topics/
-CFLAGS   += ${shell $(INCDIR) $(INCDIROPT) "$(CC)" $(APPDIR)/frameworks/topics/include/}
-CXXFLAGS += ${shell $(INCDIR) $(INCDIROPT) "$(CC)" $(APPDIR)/frameworks/topics/include/}
+CFLAGS   += ${INCDIR_PREFIX}$(APPDIR)/frameworks/topics/include
+CXXFLAGS += ${INCDIR_PREFIX}$(APPDIR)/frameworks/topics/include
 endif
