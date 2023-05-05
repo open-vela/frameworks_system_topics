@@ -16,8 +16,18 @@
 
 include $(APPDIR)/Make.defs
 
-BIN := $(APPDIR)/staging/libframework.a
+CSRCS += $(wildcard src/*/*.c)
 
-CSRCS    += $(wildcard src/*/*.c)
+ASRCS := $(wildcard $(ASRCS))
+CSRCS := $(wildcard $(CSRCS))
+CXXSRCS := $(wildcard $(CXXSRCS))
+MAINSRC := $(wildcard $(MAINSRC))
+NOEXPORTSRCS = $(ASRCS)$(CSRCS)$(CXXSRCS)$(MAINSRC)
+
+ifneq ($(NOEXPORTSRCS),)
+BIN := $(APPDIR)/staging/libframework.a
+endif
+
+EXPORT_FILES := include
 
 include $(APPDIR)/Application.mk
