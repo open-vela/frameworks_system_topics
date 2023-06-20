@@ -85,6 +85,11 @@ struct screen_brightness {
     int brightness; /* The brightness of screen, range 1 ~ 255 */
 };
 
+struct screen_touch {
+    uint64_t timestamp;
+    int state; /* The screen touch event */
+};
+
 /* register this as object request broker structure */
 
 ORB_DECLARE(wear_state);
@@ -96,5 +101,5 @@ ORB_DECLARE(network_pubip);
 ORB_DECLARE(active_state);
 ORB_DECLARE(screen_onoff);
 ORB_DECLARE(screen_brightness);
-
+ORB_DECLARE(screen_touch);
 #endif
