@@ -48,6 +48,17 @@ struct battery_state {
     int voltage; /* Battery voltage */
 };
 
+struct board_temperature {
+    uint64_t timestamp_us; /* Units is microseconds */
+    float internal; /* internal temp */
+    float shell; /* shell temp */
+    float skin; /* skin temp */
+    uint16_t raw_internal; /* adc value */
+    uint16_t raw_shell; /* adc value */
+    uint16_t raw_skin; /* adc value */
+    uint16_t efuse_ref; /* adc trigger efuse */
+};
+
 struct network_state {
     uint64_t timestamp; /* Units is microseconds */
     network_state_t type; /* Network Type. wifi, none, bluetooth, others. */
@@ -78,6 +89,7 @@ struct screen_brightness {
 ORB_DECLARE(wear_state);
 ORB_DECLARE(sleep_state);
 ORB_DECLARE(battery_state);
+ORB_DECLARE(board_temperature);
 ORB_DECLARE(network_state);
 ORB_DECLARE(network_pubip);
 ORB_DECLARE(active_state);
