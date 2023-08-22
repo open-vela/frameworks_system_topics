@@ -48,8 +48,8 @@ struct battery_state {
     int voltage; /* Battery voltage */
 };
 
-struct board_temperature {
-    uint64_t timestamp_us; /* Units is microseconds */
+struct device_temperature {
+    uint64_t timestamp; /* Units is microseconds */
     float internal; /* internal temp */
     float shell; /* shell temp */
     float skin; /* skin temp */
@@ -89,7 +89,7 @@ struct screen_brightness {
 ORB_DECLARE(wear_state);
 ORB_DECLARE(sleep_state);
 ORB_DECLARE(battery_state);
-ORB_DECLARE(board_temperature);
+ORB_DECLARE(device_temperature);
 ORB_DECLARE(network_state);
 ORB_DECLARE(network_pubip);
 ORB_DECLARE(active_state);
