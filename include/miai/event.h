@@ -26,6 +26,8 @@ typedef enum event_type_e {
     MSG_TYPE_BT_WIFICONFIG = 3,
     MSG_TYPE_BIND_STATE = 4,
     MSG_TYPE_SCREEN_BRIGHTNESS_SET = 5,
+    MSG_TYPE_AUTO_BRIGHTNESS_SET = 6,
+    MSG_TYPE_SCREEN_DISPLAY_SET = 7,
 } event_type_t;
 
 struct miai_event {
