@@ -17,13 +17,7 @@
 #include <sensor/gps_nmea.h>
 
 #ifdef CONFIG_DEBUG_UORB
-static void print_gps_nmea_message(const struct orb_metadata* meta, const void* buffer)
-{
-    const struct gps_nmea* message = buffer;
-    const orb_abstime now = orb_absolute_time();
-
-    uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago) nmea: %s",
-        meta->o_name, message->timestamp, now - message->timestamp, message->nmea);
-}
+static const char gps_nmea_format[] = "timestamp:%" PRIu64 ",nmea:[%.200s]";
 #endif
-ORB_DEFINE(gps_nmea, struct gps_nmea, print_gps_nmea_message);
+
+ORB_DEFINE(gps_nmea, struct gps_nmea, gps_nmea_format);

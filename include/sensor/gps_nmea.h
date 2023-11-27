@@ -19,10 +19,10 @@
 
 #include <uORB/uORB.h>
 
-struct gps_nmea {
+begin_packed_struct struct gps_nmea {
     uint64_t timestamp; /* Units is microseconds */
     char nmea[200]; /* Using to save an nmea message */
-};
+} end_packed_struct;
 
 /* register this as object request broker structure */
 
