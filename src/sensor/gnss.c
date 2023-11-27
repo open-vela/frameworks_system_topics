@@ -17,17 +17,15 @@
 #include <sensor/gnss.h>
 
 #ifdef CONFIG_DEBUG_UORB
-static void print_sensor_gnss_parameter_message(const struct orb_metadata* meta, const void* buffer)
-{
-    const struct sensor_gnss_parameter* message = buffer;
-
-    uorbinfo_raw("cn0: %d", message->cn0);
-    uorbinfo_raw("ttff: %f", message->ttff);
-    uorbinfo_raw("clk_drift: %.2f", message->clk_drift);
-
-    for (int i = 0; i < (sizeof(message->info) / sizeof(uint32_t)); i++) {
-        uorbinfo_raw("info[%d]: 0x%08" PRIx32 "", i, message->info[i]);
-    }
-}
+static const char sensor_gnss_format[] = "cn0:%d,ttff:%hf,clk_drift:%hf,info[0]:0x%08" PRIx32 ","
+                                         "info[1]:0x%08" PRIx32 ",info[2]:0x%08" PRIx32 ","
+                                         "info[3]:0x%08" PRIx32 ",info[4]:0x%08" PRIx32 ","
+                                         "info[5]:0x%08" PRIx32 ",info[6]:0x%08" PRIx32 ","
+                                         "info[7]:0x%08" PRIx32 ",info[8]:0x%08" PRIx32 ","
+                                         "info[9]:0x%08" PRIx32 ",info[10]:0x%08" PRIx32 ","
+                                         "info[11]:0x%08" PRIx32 ",info[12]:0x%08" PRIx32 ","
+                                         "info[13]:0x%08" PRIx32 ",info[14]:0x%08" PRIx32 ","
+                                         "info[15]:0x%08" PRIx32 "";
 #endif
-ORB_DEFINE(sensor_gnss_parameter, struct sensor_gnss_parameter, print_sensor_gnss_parameter_message);
+
+ORB_DEFINE(sensor_gnss_parameter, struct sensor_gnss_parameter, sensor_gnss_format);

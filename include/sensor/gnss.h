@@ -19,12 +19,12 @@
 
 #include <uORB/uORB.h>
 
-struct sensor_gnss_parameter {
+begin_packed_struct struct sensor_gnss_parameter {
     int cn0; /* Signal Intensity */
     float ttff; /* Positioning Time */
     float clk_drift; /* CLK Drift */
     uint32_t info[16]; /* num|gnssId|svId|cnr */
-};
+} end_packed_struct;
 
 /* register this as object request broker structure */
 
