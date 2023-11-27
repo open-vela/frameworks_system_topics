@@ -19,7 +19,7 @@
 
 #include <uORB/uORB.h>
 
-struct sensor_compass {
+begin_packed_struct struct sensor_compass {
     uint64_t timestamp; /* Units is microseconds */
     uint8_t state; /* Calibration level, the Range is [0, 4]. */
     float direction; /* Compass direction， the unit is 1 degree. */
@@ -28,7 +28,7 @@ struct sensor_compass {
     float x; /* Mag calibrate data axis X in Gauss or micro Tesla (uT) */
     float y; /* Mag calibrate data axis Y in Gauss or micro Tesla (uT) */
     float z; /* Mag calibrate data axis Z in Gauss or micro Tesla (uT) */
-};
+} end_packed_struct;
 
 /* register this as object request broker structure */
 
