@@ -57,8 +57,33 @@ static void print_lbs_wifi_message(FAR const struct orb_metadata* meta,
             message->wifiinfo[i].is_connected ? "true" : "false");
     }
 }
+
+static void print_lbs_telephony_message(FAR const struct orb_metadata* meta,
+    FAR const void* buffer)
+{
+    int i;
+    FAR const struct lbs_telephony* message = buffer;
+
+    uorbinfo_raw("%s:\tphone_type: %" PRIu32 " data_network_type: %" PRIu32 " "
+                 "imei: %s subscriber_id: %s phone_number: %s",
+        meta->o_name, message->phone_type, message->data_network_type,
+        message->imei, message->subscriber_id, message->phone_number);
+
+    for (i = 0; i < message->cellinfo_count; i++) {
+        uorbinfo_raw("cellinfo[%d]:\tmcc_string: %s mnc_string: %s "
+                     "cid: %" PRId32 ", lac: %" PRId32 ", dbm: %" PRId8 ", is_registered: %s",
+            i,
+            message->cellinfo[i].mcc_string,
+            message->cellinfo[i].mnc_string,
+            message->cellinfo[i].cid,
+            message->cellinfo[i].lac,
+            message->cellinfo[i].dbm,
+            message->cellinfo[i].is_registered ? "true" : "false");
+    }
+}
 #endif
 
 ORB_DEFINE(location_network, struct sensor_gps, print_location_message);
 ORB_DEFINE(location_fused, struct sensor_gps, print_location_message);
 ORB_DEFINE(lbs_wifi, struct lbs_wifi, print_lbs_wifi_message);
+ORB_DEFINE(lbs_telephony, struct lbs_telephony, print_lbs_telephony_message);
