@@ -37,7 +37,28 @@ static void print_location_message(FAR const struct orb_metadata* meta,
         meta->o_name, message->eph, message->epv,
         message->hdop, message->vdop);
 }
+
+static void print_lbs_wifi_message(FAR const struct orb_metadata* meta,
+    FAR const void* buffer)
+{
+    int i;
+    FAR const struct lbs_wifi* message = buffer;
+
+    uorbinfo_raw("%s:\tmac_address: %s", meta->o_name, message->mac_address);
+
+    for (i = 0; i < message->wifiinfo_count; i++) {
+        uorbinfo_raw("wifiinfo[%d]:\tbssid: %s ssid: %s ip_address: %" PRIu32 " "
+                     "rssi: %" PRIu32 " is_connected: %s",
+            i,
+            message->wifiinfo[i].bssid,
+            message->wifiinfo[i].ssid,
+            message->wifiinfo[i].ip_address,
+            message->wifiinfo[i].rssi,
+            message->wifiinfo[i].is_connected ? "true" : "false");
+    }
+}
 #endif
 
 ORB_DEFINE(location_network, struct sensor_gps, print_location_message);
 ORB_DEFINE(location_fused, struct sensor_gps, print_location_message);
+ORB_DEFINE(lbs_wifi, struct lbs_wifi, print_lbs_wifi_message);
