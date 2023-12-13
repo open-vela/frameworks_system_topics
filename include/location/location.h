@@ -20,7 +20,27 @@
 #include <nuttx/sensors/sensor.h>
 #include <uORB/uORB.h>
 
+#define BSSID_MAX_LENGTH 18
+#define SSID_MAX_LENGTH 36
+#define MAC_MAX_LENGTH 18
+#define WIFI_INFO_MAX_LENGTH 30
+
+struct provider_network_wifiinfo {
+    char bssid[BSSID_MAX_LENGTH];
+    char ssid[SSID_MAX_LENGTH];
+    uint32_t ip_address;
+    uint32_t rssi;
+    int8_t is_connected;
+};
+
+struct lbs_wifi {
+    char mac_address[MAC_MAX_LENGTH];
+    uint32_t wifiinfo_count;
+    struct provider_network_wifiinfo wifiinfo[WIFI_INFO_MAX_LENGTH];
+};
+
 ORB_DECLARE(location_network);
 ORB_DECLARE(location_fused);
+ORB_DECLARE(lbs_wifi);
 
 #endif
