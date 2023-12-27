@@ -25,6 +25,9 @@ struct sensor_compass {
     float direction; /* Compass direction， the unit is 1 degree. */
     float gravity_direction; /* Gravity direction， the unit is 1 degree. */
     float gravity_magnitude; /* Gravity magnitude, the range is 0 to 9.8 m/s². */
+    float x; /* Mag calibrate data axis X in Gauss or micro Tesla (uT) */
+    float y; /* Mag calibrate data axis Y in Gauss or micro Tesla (uT) */
+    float z; /* Mag calibrate data axis Z in Gauss or micro Tesla (uT) */
 };
 
 /* register this as object request broker structure */

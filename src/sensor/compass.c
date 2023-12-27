@@ -24,10 +24,12 @@ static void print_compass_message(const struct orb_metadata* meta, const void* b
 
     uorbinfo_raw("%s:\ttimestamp: %" PRIu64 " (%" PRIu64 " us ago)"
                  "state: %d, direction: %.01f, gravity_direction: %.01f,"
-                 "gravity_magnitude: %.1f",
+                 "gravity_magnitude: %.1f,"
+                 "x: %.02f,y: %.02f,z: %.02f",
         meta->o_name, message->timestamp, now - message->timestamp,
         message->state, message->direction, message->gravity_direction,
-        message->gravity_magnitude);
+        message->gravity_magnitude,
+        message->x, message->y, message->z);
 }
 #endif
 ORB_DEFINE(sensor_compass, struct sensor_compass, print_compass_message);
