@@ -21,7 +21,8 @@
 
 begin_packed_struct struct sensor_compass {
     uint64_t timestamp; /* Units is microseconds */
-    uint8_t state; /* Calibration level, the Range is [0, 4]. */
+    uint8_t state; /* Bit [0,2] indicates the calibration level, the Range is [0, 4]. */
+    uint8_t cal_status; /* Compass Calibration level, the Range is [0, 3]. */
     float direction; /* Compass direction， the unit is 1 degree. */
     float gravity_direction; /* Gravity direction， the unit is 1 degree. */
     float gravity_magnitude; /* Gravity magnitude, the range is 0 to 9.8 m/s². */

@@ -17,8 +17,9 @@
 #include <sensor/compass.h>
 
 #ifdef CONFIG_DEBUG_UORB
-static const char sensor_compass_format[] = "timestamp:%" PRIu64 ",state:%hhu,direction:%hf,"
-                                            "gravity_direction:%hf,gravity_magnitude:%hf,"
+static const char sensor_compass_format[] = "timestamp:%" PRIu64 ",state:%hhu,cal_status:%hhu,"
+                                            "direction:%hf,gravity_direction:%hf,"
+                                            "gravity_magnitude:%hf,"
                                             "x:%hf,y:%hf,z:%hf";
 #endif
 
