@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-#ifndef __TOPICS_INCLUDE_SENSOR_GNSS_H
-#define __TOPICS_INCLUDE_SENSOR_GNSS_H
+#ifndef __TOPICS_INCLUDE_SENSOR_FACTEST_GNSS_H
+#define __TOPICS_INCLUDE_SENSOR_FACTEST_GNSS_H
 
 #include <uORB/uORB.h>
 
-begin_packed_struct struct sensor_gnss_parameter {
+begin_packed_struct struct sensor_factest_gnss_parameter {
     int cn0; /* Signal Intensity */
     float ttff; /* Positioning Time */
     float clk_drift; /* CLK Drift */
@@ -28,6 +28,6 @@ begin_packed_struct struct sensor_gnss_parameter {
 
 /* register this as object request broker structure */
 
-ORB_DECLARE(sensor_gnss_parameter);
+ORB_DECLARE(sensor_factest_gnss_parameter);
 
 #endif
