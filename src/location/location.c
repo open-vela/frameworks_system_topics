@@ -23,6 +23,6 @@ static const char location_format[] = "timestamp:%" PRIu64 ",latitude:%hf,longit
                                       "course:%hf,satellites_used:%" PRIu32 "";
 #endif
 
-ORB_DEFINE(location_network, struct sensor_gps, location_format);
-ORB_DEFINE(location_fused, struct sensor_gps, location_format);
+ORB_DEFINE(location_network, struct sensor_gnss, location_format);
+ORB_DEFINE(location_fused, struct sensor_gnss, location_format);
 ORB_DEFINE(lbs_wifi, struct lbs_wifi, NULL);
