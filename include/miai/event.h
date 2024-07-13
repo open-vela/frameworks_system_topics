@@ -28,6 +28,7 @@ typedef enum event_type_e {
     MSG_TYPE_SCREEN_BRIGHTNESS_SET = 5,
     MSG_TYPE_AUTO_BRIGHTNESS_SET = 6,
     MSG_TYPE_SCREEN_DISPLAY_SET = 7,
+    MSG_TYPE_CHILD_LOCK = 8,
 } event_type_t;
 
 struct miai_event {
