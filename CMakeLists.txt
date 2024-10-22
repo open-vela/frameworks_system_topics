@@ -19,7 +19,7 @@ if(CONFIG_UORB)
     TARGET nuttx
     APPEND
     PROPERTY NUTTX_INCLUDE_DIRECTORIES
-             ${NUTTX_APPS_DIR}/frameworks/topics/include)
+             ${NUTTX_APPS_DIR}/frameworks/system/topics/include)
 
   file(GLOB CSRCS src/*/*.c)
   target_sources(apps PRIVATE ${CSRCS})

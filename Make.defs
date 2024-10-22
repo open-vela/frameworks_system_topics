@@ -15,7 +15,7 @@
 #
 
 ifneq ($(CONFIG_UORB),)
-CONFIGURED_APPS += $(APPDIR)/frameworks/topics/
-CFLAGS   += ${INCDIR_PREFIX}$(APPDIR)/frameworks/topics/include
-CXXFLAGS += ${INCDIR_PREFIX}$(APPDIR)/frameworks/topics/include
+CONFIGURED_APPS += $(APPDIR)/frameworks/system/topics/
+CFLAGS   += ${INCDIR_PREFIX}$(APPDIR)/frameworks/system/topics/include
+CXXFLAGS += ${INCDIR_PREFIX}$(APPDIR)/frameworks/system/topics/include
 endif
