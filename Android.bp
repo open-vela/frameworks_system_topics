@@ -1,0 +1,30 @@
+cc_library_headers {
+    name: "libuorb_topic_headers",
+    export_include_dirs: ["./include"],
+    proprietary: true,
+}
+
+cc_library_static {
+    name: "libuorb_topic",
+    vendor: true,
+    srcs: [
+        "connectivity/*.c",
+        "fitness/*.c",
+        "location/*.c",
+        "media/*.c",
+        "miai/*.c",
+        "sensor/*.c",
+        "system/*.c",
+    ],
+    local_include_dirs: ["./include"],
+    cflags: [
+      "-Wall",
+      "-Werror",
+    ],
+    header_libs: [
+      "libuorb_headers",
+    ],
+    static_libs: [
+      "libuorb",
+    ],
+}
