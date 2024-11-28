@@ -17,7 +17,6 @@
 #ifndef __APPS_SYSTEM_UORB_LOCATION_LOCATION_H
 #define __APPS_SYSTEM_UORB_LOCATION_LOCATION_H
 
-#include <nuttx/sensors/sensor.h>
 #include <uORB/uORB.h>
 
 #define BSSID_MAX_LENGTH 18
