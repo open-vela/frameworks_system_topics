@@ -1,0 +1,88 @@
+/*
+ * Copyright (C) 2023 Xiaomi Corporation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+#pragma once
+
+#include <uORB/uORB.h>
+
+#define DATA_LEN   (2)
+
+/***************************************************响指
+ ******************************************************/
+typedef enum {
+    SNAP_GESTURE_REST = 0,       // 静止
+    SNAP_GESTURE_FINGER = 1,     // 手势动作为打响指
+    SNAP_GESTURE_NUM_TYPES = 2,  // 双次打响指(算法不会出这个值)
+    SNAP_GESTURE_OTHER = 9,      // 没有完成指定手势
+} snapResult;
+
+typedef enum {
+    SNAP_CTRLSTATUS_WAITING = 0,
+    SNAP_CTRLSTATUS_READY = 1,
+    SNAP_STABLE = 3,             // 请保持水平
+    SNAP_QUICK = 4,              // 请快速握拳
+    SNAP_FIST_TIGHT = 5,         // 请握紧一点
+    SNAP_WEAR_TIGHT = 6,         // 请佩戴紧一点
+} snapStatus;
+
+/***************************************************握拳
+ ******************************************************/
+typedef enum{
+    mi_fist_status_waiting     = 0,
+    mi_fist_status_ready       = 1,
+    mi_fist_status_error       = 2,
+    mi_fist_status_stable      = 3,   // 请保持水平
+    mi_fist_status_quick       = 4,   // 请快速握拳
+    mi_fist_status_fist_tight  = 5,   // 请握紧一点
+    mi_fist_status_wear_tight  = 6,   // 请佩戴紧一点
+} fistStatus;
+
+typedef enum{
+    mi_fist_gesture_rest               = 0,   // 静止
+    mi_fist_gesture_singlefist         = 1,   // 手势动作为单次握拳
+    mi_fist_gesture_doublefist         = 2,   // 手势动作为连续两次握拳
+    mi_fist_gesture_singlesnapfinger   = 4,   // 手势动作为单次搓手指
+    mi_fist_gesture_doublesnapfinger   = 5,   // 手势动作为连续两次搓手指
+    mi_fist_gesture_other              = 9,   // 没有完成指定手势，不做任何操作
+} fistResult;
+
+/************************************************快捷手势
+ ******************************************************/
+// 快捷手势无status
+typedef enum {
+    TYPE_GUESTURE_FINGER = 0,      // 识别为响指
+    TYPE_GUESTURE_SHAKE  = 1,      // 摇一摇
+    TYPE_GUESTURE_WRIST  = 2,      // 翻腕
+}quickResult;
+
+/*************************************subscribe instance
+ ******************************************************/
+enum {
+    GUESTURE_SNAP_INSTANCE  = 0,    // 响指
+    GUESTURE_FIST_INSTANCE  = 1,    // 握拳
+    GUESTURE_QUICK_INSTANCE = 2,    // 快捷手势(摇一摇,翻腕)
+};
+
+/*******************************************手势发布topic
+ ******************************************************/
+struct algo_gesture {
+    uint64_t timeStamp_us;        // 发布时间戳
+    uint8_t  status;              // 设备是否处于手势交互控制状态
+    uint8_t  result;              // 手势动作识别结果
+    float    data[DATA_LEN];      // 设备在X-Y平面映射中data[0]-X,data[1]-Y轴向的相对位移
+};
+
+ORB_DECLARE(algo_gesture);
