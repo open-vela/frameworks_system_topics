@@ -68,12 +68,22 @@ typedef enum {
     TYPE_GUESTURE_WRIST  = 2,      // 翻腕
 }quickResult;
 
+/***********************************************pison手势
+ ******************************************************/
+// pison手势无status
+typedef enum {
+    FIST  = 0, //握拳
+    OPEN  = 1, //张开
+    POINT = 2, //其他
+}HandResult;
+
 /*************************************subscribe instance
  ******************************************************/
 enum {
     GUESTURE_SNAP_INSTANCE  = 0,    // 响指
     GUESTURE_FIST_INSTANCE  = 1,    // 握拳
     GUESTURE_QUICK_INSTANCE = 2,    // 快捷手势(摇一摇,翻腕)
+    GUESTURE_PISON_INSTANCE = 3,    // pison手势
 };
 
 /*******************************************手势发布topic
