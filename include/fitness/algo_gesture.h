@@ -72,10 +72,9 @@ typedef enum {
  ******************************************************/
 // pison手势无status
 typedef enum {
-    FIST  = 0, //握拳
-    OPEN  = 1, //张开
-    POINT = 2, //其他
-}HandResult;
+    PISON_OPEN_PLAM    = 0,       // 张开手掌
+    PISON_POINT_FINGER = 1,       // 张开
+} HandResult;
 
 /*************************************subscribe instance
  ******************************************************/
