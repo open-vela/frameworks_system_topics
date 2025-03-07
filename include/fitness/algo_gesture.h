@@ -76,6 +76,21 @@ typedef enum {
     PISON_POINT_FINGER = 1,       // 张开
 } HandResult;
 
+/***********************************************MiEng手势
+ ******************************************************/
+typedef enum{
+  MI_ENG_Status_Waiting = 0,
+  MI_ENG_Status_Ready = 1,        // 算法内部判断的ready
+  MI_ENG_Status_Input_Ready = 2,  // 由fw输入控制的ready
+  MI_ENG_Status_Stable = 3,
+} MiEngStatus;
+
+typedef enum {
+  MI_ENG_GESTURE_REST = 0,        // 静止
+  MI_ENG_GESTURE_FIST = 1,        // 握拳
+  MI_ENG_GESTURE_OTHER = 9,       // 没有完成指定手势
+} MiEngResult;
+
 /*************************************subscribe instance
  ******************************************************/
 enum {
@@ -83,6 +98,7 @@ enum {
     GUESTURE_FIST_INSTANCE  = 1,    // 握拳
     GUESTURE_QUICK_INSTANCE = 2,    // 快捷手势(摇一摇,翻腕)
     GUESTURE_PISON_INSTANCE = 3,    // pison手势
+    GUESTURE_ENG_INSTANCE = 4,      // 自研eng手势
 };
 
 /*******************************************手势发布topic
