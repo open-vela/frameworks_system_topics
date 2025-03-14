@@ -73,7 +73,9 @@ typedef enum {
 // pison手势无status
 typedef enum {
     PISON_OPEN_PLAM    = 0,       // 张开手掌
-    PISON_POINT_FINGER = 1,       // 张开
+    PISON_POINT_FINGER = 1,       // 伸出食指
+    PISON_MONEY_FINGER = 2,       // 搓手指
+    PISON_PINCH_FINGER = 3,       // 捏合
 } HandResult;
 
 /***********************************************MiEng手势
@@ -92,13 +94,15 @@ typedef enum {
 } MiEngResult;
 
 /*************************************subscribe instance
+ * PISON算法是互斥的，当３和５同时订阅时，优先执行３
  ******************************************************/
 enum {
-    GUESTURE_SNAP_INSTANCE  = 0,    // 响指
-    GUESTURE_FIST_INSTANCE  = 1,    // 握拳
-    GUESTURE_QUICK_INSTANCE = 2,    // 快捷手势(摇一摇,翻腕)
-    GUESTURE_PISON_INSTANCE = 3,    // pison手势
-    GUESTURE_ENG_INSTANCE = 4,      // 自研eng手势
+    GUESTURE_SNAP_INSTANCE   = 0,    // 响指
+    GUESTURE_FIST_INSTANCE   = 1,    // 握拳
+    GUESTURE_QUICK_INSTANCE  = 2,    // 快捷手势(摇一摇,翻腕)
+    GUESTURE_PISON_INSTANCE  = 3,    // pison手势(开手掌，伸食指)
+    GUESTURE_ENG_INSTANCE    = 4,    // 自研eng手势
+    GUESTURE_PISON_INSTANCE2 = 5,    // pison手势2(捏合，搓手指)
 };
 
 /*******************************************手势发布topic
