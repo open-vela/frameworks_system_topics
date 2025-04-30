@@ -76,6 +76,7 @@ typedef enum {
     PISON_POINT_FINGER = 1,       // 伸出食指
     PISON_MONEY_FINGER = 2,       // 搓手指
     PISON_PINCH_FINGER = 3,       // 捏合
+    PISON_TAP_FINGER   = 4,       // 捏合松开
 } HandResult;
 
 /***********************************************MiEng手势
