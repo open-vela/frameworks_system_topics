@@ -29,6 +29,9 @@ begin_packed_struct struct sensor_compass {
     float x; /* Mag calibrate data axis X in Gauss or micro Tesla (uT) */
     float y; /* Mag calibrate data axis Y in Gauss or micro Tesla (uT) */
     float z; /* Mag calibrate data axis Z in Gauss or micro Tesla (uT) */
+    float x_bias; /* Mag calibrate data axis X bias in Gauss or micro Tesla (uT) */
+    float y_bias; /* Mag calibrate data axis Y bias in Gauss or micro Tesla (uT) */
+    float z_bias; /* Mag calibrate data axis Z bias in Gauss or micro Tesla (uT) */
 } end_packed_struct;
 
 /* register this as object request broker structure */
