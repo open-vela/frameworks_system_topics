@@ -70,28 +70,40 @@ typedef enum {
 
 /***********************************************pison手势
  ******************************************************/
-// pison手势无status
 typedef enum {
-    PISON_OPEN_PLAM    = 0,       // 张开手掌
-    PISON_POINT_FINGER = 1,       // 伸出食指
-    PISON_MONEY_FINGER = 2,       // 搓手指
-    PISON_PINCH_FINGER = 3,       // 捏合
-    PISON_TAP_FINGER   = 4,       // 捏合松开
+    PISON_OPEN_PLAM           = 0, // 张开手掌
+    PISON_POINT_FINGER        = 1, // 伸出食指
+    PISON_MONEY_FINGER        = 2, // 搓手指
+    PISON_PINCH_FINGER        = 3, // 捏合
+    PISON_TAP_FINGER          = 4, // 捏合松开
+    PISON_DOUBLE_TAP_FINGER   = 5, // 捏2下
+    PISON_DOUBLE_MONEY_FINGER = 6, // 搓2下
 } HandResult;
+
+typedef enum {
+    PISON_DRAG_STOP = 0, // 无拖拽
+    PISON_DRAG_MOVE = 1, // 有拖拽
+} HandStatus;
 
 /***********************************************MiEng手势
  ******************************************************/
-typedef enum{
-  MI_ENG_Status_Waiting = 0,
-  MI_ENG_Status_Ready = 1,        // 算法内部判断的ready
-  MI_ENG_Status_Input_Ready = 2,  // 由fw输入控制的ready
-  MI_ENG_Status_Stable = 3,
+typedef enum {
+    MI_ENGGESTURE_Waiting     = 0,
+    MI_ENGGESTURE_Ready       = 1, // 算法内部判断的ready
+    MI_ENGGESTURE_Input_Ready = 2, // 由fw输入控制的ready
+    MI_ENGGESTURE_Stable      = 3,
 } MiEngStatus;
 
 typedef enum {
-  MI_ENG_GESTURE_REST = 0,        // 静止
-  MI_ENG_GESTURE_FIST = 1,        // 握拳
-  MI_ENG_GESTURE_OTHER = 9,       // 没有完成指定手势
+    MI_ENG_GESTURE_FIST       = 0, // 握拳
+    MI_ENG_GESTURE_PINCH      = 1, // 捏手指
+    MI_ENG_GESTURE_PINCHTWICE = 2, // 捏2下
+    MI_ENG_GESTURE_MONEY      = 3, // 搓2下
+    MI_ENG_GESTURE_SHAKE      = 4, // 晃一晃
+    MI_ENG_GESTURE_CLAP       = 5, // 拍手
+    MI_ENG_GESTURE_WRIST      = 6, // 翻腕
+    MI_ENG_GESTURE_FIST_NOD   = 7, // 握拳点头
+    MI_ENG_GESTURE_OTHER      = 8,
 } MiEngResult;
 
 /*************************************subscribe instance
