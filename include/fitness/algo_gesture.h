@@ -88,33 +88,31 @@ typedef enum {
 /***********************************************MiEng手势
  ******************************************************/
 typedef enum {
-    MI_ENGGESTURE_Waiting     = 0,
-    MI_ENGGESTURE_Ready       = 1, // 算法内部判断的ready
-    MI_ENGGESTURE_Input_Ready = 2, // 由fw输入控制的ready
-    MI_ENGGESTURE_Stable      = 3,
+    MI_ENG_GESTURE_STATUS_DRAG_STOP = 0,   // 无拖拽
+    MI_ENG_GESTURE_STATUS_DRAG_RUN  = 1,   // 有拖拽
 } MiEngStatus;
 
 typedef enum {
     MI_ENG_GESTURE_FIST       = 0, // 握拳
-    MI_ENG_GESTURE_PINCH      = 1, // 捏手指
+    MI_ENG_GESTURE_PINCH      = 1, // 拖拽
     MI_ENG_GESTURE_PINCHTWICE = 2, // 捏2下
     MI_ENG_GESTURE_MONEY      = 3, // 搓2下
     MI_ENG_GESTURE_SHAKE      = 4, // 晃一晃
-    MI_ENG_GESTURE_CLAP       = 5, // 拍手
-    MI_ENG_GESTURE_WRIST      = 6, // 翻腕
-    MI_ENG_GESTURE_FIST_NOD   = 7, // 握拳点头
-    MI_ENG_GESTURE_OTHER      = 8,
+    MI_ENG_GESTURE_WRIST      = 5, // 翻腕
+    MI_ENG_GESTURE_FINGERSNAP = 6, // 打响指
+    MI_ENG_GESTURE_OTHER      = 7, // 其他
+    MI_ENG_GESTURE_REST       = 8, // 休息状态
 } MiEngResult;
 
 /*************************************subscribe instance
- * PISON算法是互斥的，当３和５同时订阅时，优先执行３
+ * 自研手势不能同时订阅
  ******************************************************/
 enum {
     GUESTURE_SNAP_INSTANCE       = 0,  // 响指
     GUESTURE_FIST_INSTANCE       = 1,  // 握拳
     GUESTURE_QUICK_INSTANCE      = 2,  // 快捷手势(摇一摇,翻腕)
-    GUESTURE_PISON_INSTANCE      = 3,  // pison手势(开手掌，伸食指)
-    GUESTURE_ENG_INSTANCE        = 4,  // 自研eng手势
+    GUESTURE_MI_INSTANCE         = 3,  // 自研手势(晃一晃，翻手腕，打响指)
+    GUESTURE_MI_INSTANCE1        = 4,  // 自研手势1(握拳，拖拽，捏2次，搓2次)
     GUESTURE_PISON_INSTANCE2     = 5,  // pison手势2(捏合，搓手指)
     GUESTURE_PISON_DRAG_INSTANCE = 6,  // pison手势(拖拽)
 };
