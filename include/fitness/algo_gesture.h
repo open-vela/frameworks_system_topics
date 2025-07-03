@@ -112,8 +112,8 @@ enum {
     GUESTURE_FIST_INSTANCE       = 1,  // 握拳
     GUESTURE_QUICK_INSTANCE      = 2,  // 快捷手势(摇一摇,翻腕)
     GUESTURE_MI_INSTANCE         = 3,  // 自研手势(晃一晃，翻手腕，打响指)
-    GUESTURE_MI_INSTANCE1        = 4,  // 自研手势1(握拳，拖拽，捏2次，搓2次)
-    GUESTURE_PISON_INSTANCE2     = 5,  // pison手势2(捏合，搓手指)
+    GUESTURE_MI_INSTANCE1        = 4,  // 自研手势1(捏2次，搓2次)
+    GUESTURE_MI_INSTANCE2        = 5,  // 自研手势2(握拳，拖拽，捏2次)
     GUESTURE_PISON_DRAG_INSTANCE = 6,  // pison手势(拖拽)
 };
 
