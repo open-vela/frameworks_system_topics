@@ -18,7 +18,8 @@
 
 #ifdef CONFIG_DEBUG_UORB
 static const char algo_gesture_format[] = "timestamp_us:%" PRIu64 ""
-                    "status:%hhu,result:%hhu,data[0]:%hf,data[1]:%hf";
+                                          "status:%hhu,result:%hhu,data[0]:%hf,"
+                                          "data[1]:%hf,data[2]:%hf,data[3]:%hf";
 #endif
 
 ORB_DEFINE(algo_gesture, struct algo_gesture, algo_gesture_format);
