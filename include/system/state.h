@@ -103,6 +103,18 @@ struct vibrator_state {
     uint8_t start; /* The vibrating status, 1: start, 0: stop */
 };
 
+typedef enum {
+    MUTE_MODE_ON, /* media.mutemode enabled */
+    MUTE_MODE_OFF, /* media.mutemode disabled */
+    DND_MODE_ON, /* Do Not Disturb enabled */
+    DND_MODE_OFF /* Do Not Disturb disabled */
+} work_state_t;
+
+struct work_mode {
+    uint64_t timestamp;
+    work_state_t mode_val;
+};
+
 /* register this as object request broker structure */
 
 ORB_DECLARE(wear_state);
@@ -117,4 +129,6 @@ ORB_DECLARE(screen_onoff);
 ORB_DECLARE(screen_brightness);
 ORB_DECLARE(screen_touch);
 ORB_DECLARE(vibrator_state);
+ORB_DECLARE(work_mode);
+
 #endif

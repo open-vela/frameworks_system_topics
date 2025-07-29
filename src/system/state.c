@@ -30,4 +30,6 @@ ORB_DEFINE(network_pubip, struct network_pubip, NULL);
 ORB_DEFINE(active_state, struct active_state, NULL);
 ORB_DEFINE(screen_onoff, struct screen_onoff, NULL);
 ORB_DEFINE(screen_brightness, struct screen_brightness, NULL);
+ORB_DEFINE(screen_touch, struct screen_touch, NULL);
 ORB_DEFINE(vibrator_state, struct vibrator_state, vibrator_state_format);
+ORB_DEFINE(work_mode, struct work_mode, NULL);
