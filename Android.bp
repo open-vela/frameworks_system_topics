@@ -30,6 +30,7 @@ cc_library_static {
     ],
     header_libs: [
       "libuorb_headers",
+      "kernel_modules_headers"
     ],
     static_libs: [
       "libuorb",
