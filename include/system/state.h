@@ -115,6 +115,10 @@ struct work_mode {
     work_state_t mode_val;
 };
 
+struct gesture_type {
+    uint64_t timestamp;
+    int type; /* custom gesrure type */
+};
 /* register this as object request broker structure */
 
 ORB_DECLARE(wear_state);
@@ -130,5 +134,5 @@ ORB_DECLARE(screen_brightness);
 ORB_DECLARE(screen_touch);
 ORB_DECLARE(vibrator_state);
 ORB_DECLARE(work_mode);
-
+ORB_DECLARE(gesture_type);
 #endif

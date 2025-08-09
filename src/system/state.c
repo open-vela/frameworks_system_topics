@@ -33,3 +33,4 @@ ORB_DEFINE(screen_brightness, struct screen_brightness, NULL);
 ORB_DEFINE(screen_touch, struct screen_touch, NULL);
 ORB_DEFINE(vibrator_state, struct vibrator_state, vibrator_state_format);
 ORB_DEFINE(work_mode, struct work_mode, NULL);
+ORB_DEFINE(gesture_type, struct gesture_type, NULL);
