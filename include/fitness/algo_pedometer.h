@@ -19,9 +19,24 @@
 #include <uORB/uORB.h>
 
 struct algo_pedometer {
-  uint64_t timestamp_us;   // topic发布时间戳
-  uint32_t count;          // 总步数
-  uint32_t step_frequency; // 步频-步/分钟
+    uint64_t timestamp_us; // topic发布时间戳
+
+    /**
+     * _rt后缀的数据: 实时性更高, 但准确度较低
+     * 不带后缀的数据: 准确度更高, 但实时性较低
+     */
+
+    // 总步数
+    uint32_t count;
+    uint32_t count_rt;
+
+    // 步数增量
+    uint16_t delta;
+    uint16_t delta_rt;
+
+    // 步频-步/分钟
+    uint32_t step_frequency;
+    uint32_t step_frequency_rt;
 };
 
 ORB_DECLARE(algo_pedometer);
