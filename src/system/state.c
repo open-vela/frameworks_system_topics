@@ -23,6 +23,7 @@ static const char vibrator_state_format[] = "timestamp_us:%" PRIu64 ",state:%d";
 ORB_DEFINE(wear_state, struct wear_state, NULL);
 ORB_DEFINE(sleep_state, struct sleep_state, NULL);
 ORB_DEFINE(battery_state, struct battery_state, NULL);
+ORB_DEFINE(charger_state, struct charger_state, NULL);
 ORB_DEFINE(device_temperature, struct device_temperature, NULL);
 ORB_DEFINE(network_state, struct network_state, NULL);
 ORB_DEFINE(network_pubip, struct network_pubip, NULL);

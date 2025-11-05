@@ -49,6 +49,14 @@ struct battery_state {
     int voltage; /* Battery voltage */
 };
 
+struct charger_state {
+    uint64_t timestamp; /* Units is microseconds */
+    int state; /* 0: reset; 1: charger abnormal; 2...n: others abnormal */
+    int voltage; /* Units is mV */
+    int current; /* Units is mA */
+    int protocol;
+};
+
 struct device_temperature {
     uint64_t timestamp; /* Units is microseconds */
     float internal; /* internal temp */
@@ -100,6 +108,7 @@ struct vibrator_state {
 ORB_DECLARE(wear_state);
 ORB_DECLARE(sleep_state);
 ORB_DECLARE(battery_state);
+ORB_DECLARE(charger_state);
 ORB_DECLARE(device_temperature);
 ORB_DECLARE(network_state);
 ORB_DECLARE(network_pubip);
