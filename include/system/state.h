@@ -90,6 +90,11 @@ struct screen_touch {
     int state; /* The screen touch event */
 };
 
+struct vibrator_state {
+    uint64_t timestamp; /* Units is microseconds */
+    uint8_t start; /* The vibrating status, 1: start, 0: stop */
+};
+
 /* register this as object request broker structure */
 
 ORB_DECLARE(wear_state);
@@ -102,4 +107,5 @@ ORB_DECLARE(active_state);
 ORB_DECLARE(screen_onoff);
 ORB_DECLARE(screen_brightness);
 ORB_DECLARE(screen_touch);
+ORB_DECLARE(vibrator_state);
 #endif
