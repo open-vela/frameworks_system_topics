@@ -1,0 +1,38 @@
+cc_library_headers {
+    name: "libuorb_topic_headers",
+    export_include_dirs: ["./include"],
+    proprietary: true,
+}
+
+cc_library_static {
+    name: "libuorb_topic",
+    vendor: true,
+    srcs: [
+        "src/connectivity/*.c",
+        "src/fitness/*.c",
+        "src/location/*.c",
+        "src/media/*.c",
+        "src/miai/*.c",
+        "src/sensor/*.c",
+        "src/system/*.c",
+    ],
+    local_include_dirs: ["./include"],
+    cflags: [
+      "-Wall",
+      "-Werror",
+      "-DFAR=",
+      "-DCODE=",
+      "-DOK=0",
+      "-DERROR=-1",
+      "-DCONFIG_DEBUG_UORB",
+      "-Dbegin_packed_struct=",
+      "-Dend_packed_struct=__attribute__((packed))"
+    ],
+    header_libs: [
+      "libuorb_headers",
+      "kernel_modules_headers"
+    ],
+    static_libs: [
+      "libuorb",
+    ],
+}
